@@ -4,6 +4,7 @@ import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import org.example.entity.PointEntity;
+import org.example.repository.PointsRepository;
 import org.example.utils.exceptions.ValidationError;
 
 import java.util.Collections;

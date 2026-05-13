@@ -2,7 +2,6 @@ package org.example.controller;
 
 import com.google.gson.Gson;
 import jakarta.annotation.PostConstruct;
-import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
 import jakarta.faces.validator.ValidatorException;
@@ -14,7 +13,7 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-import org.example.dto.PointDTO;
+import org.example.dto.PointDto;
 import org.example.entity.PointEntity;
 import org.example.managers.PointsBean;
 import org.example.services.WeatherService;
@@ -91,8 +90,8 @@ public class InputBean implements Serializable {
         refreshTemperature();
         PrimeFaces.current().ajax().addCallbackParam("refreshedTemp", temperature);
 
-        List<PointDTO> pointDTOs = new CopyOnWriteArrayList<>();
-        selectedRValues.forEach((r) -> pointDTOs.add(new PointDTO(x, y, Float.parseFloat(r), this.temperature)));
+        List<PointDto> pointDTOs = new CopyOnWriteArrayList<>();
+        selectedRValues.forEach((r) -> pointDTOs.add(new PointDto(x, y, Float.parseFloat(r), this.temperature)));
         addPoints(pointDTOs);
     }
 
@@ -100,9 +99,9 @@ public class InputBean implements Serializable {
      * Инкапсулированный метод для добавления точек через контроллер
      * @param pointDTOs массив из дто
      */
-    private void addPoints(List<PointDTO> pointDTOs) {
+    private void addPoints(List<PointDto> pointDTOs) {
         for (int i = 0; i < pointDTOs.size(); i++) {
-            PointDTO currentPointDTO = pointDTOs.get(i);
+            PointDto currentPointDTO = pointDTOs.get(i);
             currentPointDTO.setHit(pointValidator.checkArea(currentPointDTO));
             pointDTOs.set(i, currentPointDTO);
         }
@@ -126,10 +125,10 @@ public class InputBean implements Serializable {
         String y = facesContext.getExternalContext().getRequestParameterMap().get("y");
         List<String> rList = (List<String>) new Gson().fromJson(facesContext.getExternalContext().getRequestParameterMap().get("rList"), List.class);
 
-        List<PointDTO> pointDTOs = new CopyOnWriteArrayList<>();
+        List<PointDto> pointDTOs = new CopyOnWriteArrayList<>();
         rList.forEach(
                 (r) -> pointDTOs.add(
-                        new PointDTO(Float.parseFloat(x), Float.parseFloat(y), Float.parseFloat(r), this.temperature)
+                        new PointDto(Float.parseFloat(x), Float.parseFloat(y), Float.parseFloat(r), this.temperature)
                 )
         );
         addPoints(pointDTOs);
@@ -139,9 +138,9 @@ public class InputBean implements Serializable {
      * Получить просто все точки из кэша
      * @return List из DTOшек
      */
-    public List<PointDTO> getAllPoints() {
+    public List<PointDto> getAllPoints() {
         return pointsBean.getAll().stream()
-                .map(PointDTO::new)
+                .map(PointDto::new)
                 .toList();
     }
 
@@ -149,8 +148,8 @@ public class InputBean implements Serializable {
      * Получить и перевернуть все точки из кэша
      * @return List из DTOшек
      */
-    public List<PointDTO> getReversedPoints() {
-        List<PointDTO> reversedList = new ArrayList<>(getAllPoints());
+    public List<PointDto> getReversedPoints() {
+        List<PointDto> reversedList = new ArrayList<>(getAllPoints());
         Collections.reverse(reversedList);
         return reversedList;
     }

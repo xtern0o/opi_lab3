@@ -6,14 +6,14 @@ import org.example.entity.PointEntity;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PointDTO {
+public class PointDto {
     private Float x;
     private Float y;
     private Float r;
     private Float temperature;
     private boolean hit;
 
-    public PointDTO(Float x, Float y, Float r, Float temperature) {
+    public PointDto(Float x, Float y, Float r, Float temperature) {
         this.x = x;
         this.y = y;
         this.r = r;
@@ -21,7 +21,7 @@ public class PointDTO {
         this.temperature = temperature;
     }
 
-    public PointDTO(PointEntity pointEntity) {
+    public PointDto(PointEntity pointEntity) {
         this.x = pointEntity.getX();
         this.y = pointEntity.getY();
         this.r = pointEntity.getR();

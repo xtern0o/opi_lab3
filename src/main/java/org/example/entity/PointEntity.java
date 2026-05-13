@@ -2,7 +2,7 @@ package org.example.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.example.dto.PointDTO;
+import org.example.dto.PointDto;
 
 import java.time.Instant;
 
@@ -14,7 +14,7 @@ import java.time.Instant;
 @Table(name="points")
 public class PointEntity {
 
-    public PointEntity(PointDTO pointDTO) {
+    public PointEntity(PointDto pointDTO) {
         this.x = pointDTO.getX();
         this.y = pointDTO.getY();
         this.r = pointDTO.getR();

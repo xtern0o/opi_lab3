@@ -1,8 +1,7 @@
 package org.example.utils.validators;
 
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Singleton;
-import org.example.dto.PointDTO;
+import org.example.dto.PointDto;
 import org.example.entity.PointEntity;
 
 // TODO: сделать логику checkArea
@@ -22,7 +21,7 @@ public class PointValidator extends AbstractValidator<PointEntity> {
      * @param point координаты и радиус
      * @return true если внутри, false если вне площади
      */
-    public boolean checkArea(PointDTO point) {
+    public boolean checkArea(PointDto point) {
         Float x = point.getX(), y = point.getY(), r = point.getR();
 
         if (x >= 0 && y >= 0) {
