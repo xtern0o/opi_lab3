@@ -13,24 +13,10 @@ repositories {
     mavenCentral()
 }
 
-sourceSets {
-    main {
-        java {
-            srcDirs = ['src/main/java']
-        }
-    }
-    test {
-        java {
-            srcDirs = ['src/test/java']
-        }
-    }
-}
-
 def srcDir = 'src/main/java'
 def classesDir = layout.buildDirectory.dir("classes/java/main")
 def jarFile = layout.buildDirectory.file("libs/${project.name}.jar")
 def warFile = layout.buildDirectory.file("libs/${project.name}.war")
-
 
 def testSrcDir = 'src/test/java'
 def testClassesDir = layout.buildDirectory.dir("classes/java/test")
@@ -230,9 +216,6 @@ tasks.register("myTest") {
 
     dependsOn("myCompileTest")
 
-    inputs.dir(testClassesDir)
-    inputs.dir(classesDir)
-
     doLast {
         println "проверяем тесты..."
 
@@ -260,6 +243,8 @@ tasks.register("myTest") {
     }
 }
 
+// инкапсулировать в класс в build_src через класс всю логику тасок
+
 tasks.register("music") {
     group = "opi-lab3"
     description = "воспроизведение музыки по завершению сборки"
@@ -269,7 +254,7 @@ tasks.register("music") {
     dependsOn("myBuild")
 
     // 2. после таски build обязана проиграть музыка в любом случае
-//    mustRunAfter("myBuild")
+    // mustRunAfter("myBuild")
 
     doLast {
         def soundFile = file(soundsSuccess)
@@ -298,7 +283,9 @@ tasks.register("env") {
 
     def javaExe = project.hasProperty('env.java.executable') ? project.property('env.java.executable') : 'java'
     def jvmArgsStr = project.hasProperty('env.jvm.args') ? project.property('env.jvm.args') : ''
+    def appArgsStr = project.hasProperty('env.app.args') ? project.property('env.app.args') : ''
     def jvmArgsList = jvmArgsStr.split(" ").findAll { !it.trim().isEmpty() }
+    def appArgsList = appArgsStr.split(" ").findAll { !it.trim().isEmpty() }
 
     doLast {
         def jarPath = jarFile.get().asFile.absolutePath
@@ -306,10 +293,12 @@ tasks.register("env") {
         def cmd = [javaExe]
         cmd.addAll(jvmArgsList)
         cmd.addAll(['-jar', jarPath])
+        cmd.addAll(appArgsList)
 
         println "----- Запуск приложения в альтернативном оокружении -----"
         println "----- Используемая Java:   ${javaExe}"
         println "----- Аргументы JVM:       ${jvmArgsList}"
+        println "----- App args:            ${appArgsList}"
         println "----- Команда:             ${cmd.join(' ')}"
 
         exec {
