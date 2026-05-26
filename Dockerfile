@@ -1,7 +1,6 @@
 FROM quay.io/wildfly/wildfly:latest
 
 COPY psql_jdbc_driver/postgresql-42.7.8.jar /opt/jboss/wildfly/standalone/deployments/
-#COPY build/libs/web_lab3-1.0.war /opt/jboss/wildfly/standalone/deployments/
 COPY build/libs/web_lab3.war /opt/jboss/wildfly/standalone/deployments/
 
 

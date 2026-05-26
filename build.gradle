@@ -53,110 +53,117 @@ tasks.register("myCompile") {
     }
 }
 
-tasks.register("myBuild") {
-    group = 'opi-lab3'
-    description = 'компиляция исходных кодов проекта и их упаковка в исполняемый jar-архив'
-
-    dependsOn("myCompile")
-
-    inputs.dir(classesDir)
-    outputs.file(jarFile)
-
-    doLast {
-        println 'jaring...'
-
-        def destJarFile = jarFile.get().asFile
-        file(destJarFile.parent).mkdirs()
-
-        def manifestDir = layout.buildDirectory.dir("tmp/manifest").get().asFile
-        manifestDir.mkdirs()
-        def manifestFile = new File(manifestDir, "MANIFEST.MF")
-
-        def appVersion = project.hasProperty('projVersion') ? project.property('projVersion') : version
-        def mainClass = project.hasProperty('mainClassName') ? project.property('mainClassName') : 'org.example.Main'
-
-        manifestFile.text = """Manifest-Version: 1.0
-Implementation-Version: ${appVersion}
-Main-Class: ${mainClass}
-"""
-
-        def cmd = [
-                "jar", "cfm",
-                destJarFile.absolutePath,
-                manifestFile.absolutePath,
-                "-C", classesDir.get().asFile.absolutePath,
-                "."
-        ]
-
-        exec {
-            commandLine cmd
-        }
-
-        println "builded jar successfully"
-    }
-}
-
 tasks.register("myWar") {
-    group = "opi-lab3"
-    description = "сборка war-файла, который можно запустить из wildfly"
+    group = 'opi-lab3'
+    description = 'упаковка скомпилированных классов и ресурсов в war-архив'
 
     dependsOn("myCompile")
 
     inputs.dir(classesDir)
     inputs.dir('src/main/webapp')
-    inputs.dir('src/main/resources')  // ресурсы для персистинса
-    inputs.files(configurations.runtimeClasspath) // изменения в зависимостях
-
+    inputs.dir('src/main/resources')
+    inputs.files(configurations.runtimeClasspath)
     outputs.file(warFile)
 
     doLast {
-        println 'waring...'
+        println "WARing..."
 
         def stageDir = layout.buildDirectory.dir('tmp/war_stage').get().asFile
-        if (stageDir.exists()) {
-            stageDir.deleteDir()
-        }
+        if (stageDir.exists()) stageDir.deleteDir()
         stageDir.mkdirs()
 
-        // копируем WEB-INF
+        // webapp (WEB-INF/web.xml, faces-config.xml, xhtml
         project.copy {
             from 'src/main/webapp'
             into stageDir
         }
 
-        // resources
+        // resources (persistence.xml) -> WEB-INF/classes
         project.copy {
             from 'src/main/resources'
             into new File(stageDir, 'WEB-INF/classes')
         }
 
-        // копируем скомпилированные класс файлы
+        // .class -> WEB-INF/classes
         project.copy {
             from classesDir.get().asFile
             into new File(stageDir, 'WEB-INF/classes')
         }
 
-        // копируем внешние зависимости
+        // libs -> WEB-INF/lib
         project.copy {
             from configurations.runtimeClasspath
             into new File(stageDir, 'WEB-INF/lib')
         }
 
-        def destWarFile = warFile.get().asFile
-        file(destWarFile.parent).mkdirs()
-
-        def cmd = [
-                "jar", "cf",
-                destWarFile.absolutePath,
-                "-C", stageDir.absolutePath,
-                "."
-        ]
+        def destWar = warFile.get().asFile
+        file(destWar.parent).mkdirs()
 
         exec {
-            commandLine cmd
+            commandLine "jar", "cf", destWar.absolutePath,
+                    "-C", stageDir.absolutePath, "."
         }
 
-        println "war-архив успешно собран: ${destWarFile.absolutePath}"
+        println "WAR success ${destWar.name}"
+    }
+}
+tasks.register("myBuild") {
+    group = 'opi-lab3'
+    description = 'компиляция исходных кодов проекта и их упаковка в исполняемый jar-архив'
+
+    dependsOn("myWar")
+
+    inputs.file(warFile)
+    outputs.file(jarFile)
+
+    doLast {
+        println 'jaring cool jar...'
+
+        def wildflyHome = project.findProperty('wildfly.home') ?: '/opt/wildfly'
+        def jbossModules = new File(wildflyHome as String, 'jboss-modules.jar')
+        if (!jbossModules.exists()) {
+            throw new GradleException("jboss-modules.jar не найден: ${jbossModules}")
+        }
+
+        def jarStageDir = layout.buildDirectory.dir('tmp/jar_stage').get().asFile
+        if (jarStageDir.exists()) jarStageDir.deleteDir()
+        jarStageDir.mkdirs()
+
+        project.copy {
+            from classesDir.get().asFile
+            into jarStageDir
+        }
+
+        // встраиваем war чтобы потом найти его при исполнении
+        project.copy {
+            from warFile.get().asFile
+            into jarStageDir
+            rename { 'embedded.war' }
+        }
+
+        def manifestDir = layout.buildDirectory.dir('tmp/manifest').get().asFile
+        manifestDir.mkdirs()
+        def manifestFile = new File(manifestDir, 'MANIFEST.MF')
+        def appVersion = project.hasProperty('projVersion') ? project.property('projVersion') : version
+
+        manifestFile.text = """\
+Manifest-Version: 1.0
+Implementation-Version: ${appVersion}
+Main-Class: org.example.Launcher
+Class-Path: file://${jbossModules.absolutePath}
+"""
+
+        def destJar = jarFile.get().asFile
+        file(destJar.parent).mkdirs()
+
+        exec {
+            commandLine "jar", "cfm",
+                    destJar.absolutePath,
+                    manifestFile.absolutePath,
+                    "-C", jarStageDir.absolutePath, "."
+        }
+
+        println "JAR successfully jared"
     }
 }
 
@@ -254,7 +261,7 @@ tasks.register("music") {
     dependsOn("myBuild")
 
     // 2. после таски build обязана проиграть музыка в любом случае
-    // mustRunAfter("myBuild")
+//  mustRunAfter("myBuild")
 
     doLast {
         def soundFile = file(soundsSuccess)

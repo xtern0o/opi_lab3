@@ -3,14 +3,18 @@
 
 ## Запуск
 ```bash
-./gradlew build
+./gradlew myBuild
 ```
 ```bash
-docker-compose up -d
+java -Dwildfly.home=/home/maxkarn/Desktop/wildfly/wildfly-39.0.1.Final \
+     -Dwildfly.admin.name=admin \
+     -Dwildfly.admin.password=admin \
+     -Dwildfly.jdbc.driver=/home/maxkarn/Desktop/labs/opi/lab3/web_lab3/psql_jdbc_driver/postgresql-42.7.8.jar\
+     -Dwildfly.wait=45 \
+     -jar build/libs/web_lab3.jar
+     
 ```
-- `http://localhost:55990`: Configuration > Subsystems > Datasources & Drivers > Datasources (+) > Add Datasource
-- там найти бд. URL для соединения: поменять `localhost` на `db`, `<DATABASE_NAME>` поменять на `pointsdb`
-- запустить .war с приложением
+
 
 ## opi-lab3
 
