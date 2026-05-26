@@ -1,22 +1,4 @@
-# web_lab3
-> javaserver faces
-
-## Запуск
-```bash
-./gradlew myBuild
-```
-```bash
-java -Dwildfly.home=/home/maxkarn/Desktop/wildfly/wildfly-39.0.1.Final \
-     -Dwildfly.admin.name=admin \
-     -Dwildfly.admin.password=admin \
-     -Dwildfly.jdbc.driver=/home/maxkarn/Desktop/labs/opi/lab3/web_lab3/psql_jdbc_driver/postgresql-42.7.8.jar\
-     -Dwildfly.wait=45 \
-     -jar build/libs/web_lab3.jar
-     
-```
-
-
-## opi-lab3
+# opi-lab3
 
 > Вариант: 16521
 
@@ -30,3 +12,27 @@ java -Dwildfly.home=/home/maxkarn/Desktop/wildfly/wildfly-39.0.1.Final \
 - `myTest` - запуск junit-тестов проекта
 - `music` - воспроизведение музыки по завершению сборки
 - `myEnv` - осуществляет сборку и запуск программы в альтернативных окружениях; окружение задается версией java и набором аргументов виртуальной машины в файле параметров
+
+## Граф зависимостей задач
+```
+*   myCompileTest --+
+                    |
+                    myCompile ------+--> myWar --> myBuild --> music
+                                    |
+                                    +--> myEnv
+*   myTest --> myCompileTest
+*   myClean
+```
+
+## Запуск
+```bash
+./gradlew myBuild
+```
+```bash
+java -Dwildfly.home=/home/maxkarn/Desktop/wildfly/wildfly-39.0.1.Final \    # путь до директории wildfly
+     -Dwildfly.admin.name=admin \                                           # имя admin-пользователя
+     -Dwildfly.admin.password=admin \                                       # пароль admin-пользователя
+     -Dwildfly.jdbc.driver=/home/maxkarn/Desktop/labs/opi/lab3/web_lab3/psql_jdbc_driver/postgresql-42.7.8.jar \ # путь до jdbc драйвера postgresql
+     -Dwildfly.wait=45 \                                                    # сколько секунд ждать пока wildfly поднимется
+     -jar build/libs/web_lab3.jar
+```
