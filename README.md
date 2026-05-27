@@ -29,10 +29,10 @@
 ./gradlew myBuild
 ```
 ```bash
-java -Dwildfly.home=/home/maxkarn/Desktop/wildfly/wildfly-39.0.1.Final \    # путь до директории wildfly
-     -Dwildfly.admin.name=admin \                                           # имя admin-пользователя
-     -Dwildfly.admin.password=admin \                                       # пароль admin-пользователя
-     -Dwildfly.jdbc.driver=/home/maxkarn/Desktop/labs/opi/lab3/web_lab3/psql_jdbc_driver/postgresql-42.7.8.jar \ # путь до jdbc драйвера postgresql
-     -Dwildfly.wait=45 \                                                    # сколько секунд ждать пока wildfly поднимется
+java -Dwildfly.home=/home/maxkarn/Desktop/wildfly/wildfly-39.0.1.Final \
+     -Dwildfly.admin.name=admin \
+     -Dwildfly.admin.password=admin \
+     -Dwildfly.jdbc.driver=/home/maxkarn/Desktop/labs/opi/lab3/web_lab3/psql_jdbc_driver/postgresql-42.7.8.jar \
+     -Dwildfly.wait=45 \
      -jar build/libs/web_lab3.jar
 ```

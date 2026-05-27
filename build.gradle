@@ -1,5 +1,4 @@
-import javax.sound.sampled.AudioSystem
-import javax.sound.sampled.Clip
+import org.example.tasks.*
 
 plugins {
     id 'java'
@@ -14,305 +13,97 @@ repositories {
 }
 
 def srcDir = 'src/main/java'
-def classesDir = layout.buildDirectory.dir("classes/java/main")
-def jarFile = layout.buildDirectory.file("libs/${project.name}.jar")
-def warFile = layout.buildDirectory.file("libs/${project.name}.war")
-
 def testSrcDir = 'src/test/java'
-def testClassesDir = layout.buildDirectory.dir("classes/java/test")
+def srcClassesDir = layout.buildDirectory.dir("classes/java/main")
+def testClassDir = layout.buildDirectory.dir("classes/java/test")
+def outJarFile = layout.buildDirectory.file("libs/${project.name}.jar")
+def outWarFile = layout.buildDirectory.file("libs/${project.name}.war")
+def webappDir = layout.projectDirectory.dir("src/main/webapp")
+def resourcesDir = layout.projectDirectory.dir("src/main/resources")
+def soundFile = layout.projectDirectory.file("music/sound-success.wav")
 
-def soundsSuccess = 'music/sound-success.wav'
 
-// get() получает результат сразу же на этапе конфигурации
-// лучше использовать lazy model используя layout - вычислить результат, когда он понадобится
-
-tasks.register("myCompile") {
+tasks.register("myCompile", MyCompileTask) {
     group = 'opi-lab3'
     description = 'компиляция исходных кодов проекта'
 
-    // FileTree отображает динамические данные на момент обращения к ней
-    inputs.files(fileTree(dir: srcDir, includes: ['**/*.java']))
-    outputs.dir(classesDir)
-
-    doLast {
-        println "compiling files..."
-
-        def destDir = classesDir.get().asFile.absolutePath
-
-        file(destDir).mkdirs()
-
-        // spread dot (*) \eq stream().map(f -> f.path).toList()
-        def sourcesPaths = fileTree(dir: srcDir, includes: ['**/*.java']).files*.path
-        def classpath = sourceSets.main.compileClasspath.asPath
-        def cmd = ["javac", "-d", destDir, "-cp", classpath] + sourcesPaths
-        exec {
-            commandLine cmd
-        }
-
-        println "compiled successfully!!"
-    }
+    sources.from(fileTree(dir: srcDir, includes: ['**/*.java']))
+    classesDir = srcClassesDir
 }
 
-tasks.register("myWar") {
+tasks.register("myWar", MyWarTask) {
     group = 'opi-lab3'
-    description = 'упаковка скомпилированных классов и ресурсов в war-архив'
+    description = 'сборка war-архива'
 
     dependsOn("myCompile")
 
-    inputs.dir(classesDir)
-    inputs.dir('src/main/webapp')
-    inputs.dir('src/main/resources')
-    inputs.files(configurations.runtimeClasspath)
-    outputs.file(warFile)
-
-    doLast {
-        println "WARing..."
-
-        def stageDir = layout.buildDirectory.dir('tmp/war_stage').get().asFile
-        if (stageDir.exists()) stageDir.deleteDir()
-        stageDir.mkdirs()
-
-        // webapp (WEB-INF/web.xml, faces-config.xml, xhtml
-        project.copy {
-            from 'src/main/webapp'
-            into stageDir
-        }
-
-        // resources (persistence.xml) -> WEB-INF/classes
-        project.copy {
-            from 'src/main/resources'
-            into new File(stageDir, 'WEB-INF/classes')
-        }
-
-        // .class -> WEB-INF/classes
-        project.copy {
-            from classesDir.get().asFile
-            into new File(stageDir, 'WEB-INF/classes')
-        }
-
-        // libs -> WEB-INF/lib
-        project.copy {
-            from configurations.runtimeClasspath
-            into new File(stageDir, 'WEB-INF/lib')
-        }
-
-        def destWar = warFile.get().asFile
-        file(destWar.parent).mkdirs()
-
-        exec {
-            commandLine "jar", "cf", destWar.absolutePath,
-                    "-C", stageDir.absolutePath, "."
-        }
-
-        println "WAR success ${destWar.name}"
-    }
+    classesDir = srcClassesDir
+    it.webappDir = webappDir
+    it.resourcesDir = resourcesDir
+    warFile = outWarFile
+    runtimeClasspath.from(configurations.runtimeClasspath)
 }
-tasks.register("myBuild") {
+
+tasks.register("myBuild", MyBuildTask) {
     group = 'opi-lab3'
-    description = 'компиляция исходных кодов проекта и их упаковка в исполняемый jar-архив'
+    description = 'сборка исполняемого jar со встроенным war и лаунчером wildfly'
 
     dependsOn("myWar")
 
-    inputs.file(warFile)
-    outputs.file(jarFile)
-
-    doLast {
-        println 'jaring cool jar...'
-
-        def wildflyHome = project.findProperty('wildfly.home') ?: '/opt/wildfly'
-        def jbossModules = new File(wildflyHome as String, 'jboss-modules.jar')
-        if (!jbossModules.exists()) {
-            throw new GradleException("jboss-modules.jar не найден: ${jbossModules}")
-        }
-
-        def jarStageDir = layout.buildDirectory.dir('tmp/jar_stage').get().asFile
-        if (jarStageDir.exists()) jarStageDir.deleteDir()
-        jarStageDir.mkdirs()
-
-        project.copy {
-            from classesDir.get().asFile
-            into jarStageDir
-        }
-
-        // встраиваем war чтобы потом найти его при исполнении
-        project.copy {
-            from warFile.get().asFile
-            into jarStageDir
-            rename { 'embedded.war' }
-        }
-
-        def manifestDir = layout.buildDirectory.dir('tmp/manifest').get().asFile
-        manifestDir.mkdirs()
-        def manifestFile = new File(manifestDir, 'MANIFEST.MF')
-        def appVersion = project.hasProperty('projVersion') ? project.property('projVersion') : version
-
-        manifestFile.text = """\
-Manifest-Version: 1.0
-Implementation-Version: ${appVersion}
-Main-Class: org.example.Launcher
-Class-Path: file://${jbossModules.absolutePath}
-"""
-
-        def destJar = jarFile.get().asFile
-        file(destJar.parent).mkdirs()
-
-        exec {
-            commandLine "jar", "cfm",
-                    destJar.absolutePath,
-                    manifestFile.absolutePath,
-                    "-C", jarStageDir.absolutePath, "."
-        }
-
-        println "JAR successfully jared"
-    }
+    warFile = outWarFile
+    classesDir = srcClassesDir
+    jarFile = outJarFile
+    appVersion.set(project.findProperty('projVersion') ?: version)
+    wildflyHome.set(project.findProperty('wildfly.home') ?: '/opt/wildfly')
 }
 
-tasks.register("myClean") {
-    group = "opi-lab3"
-    description = "удаление скомпилированных классов проекта и всех временных файлов (если они есть)"
-
-    doLast {
-        println "cleaning..."
-
-        delete layout.buildDirectory.get().asFile
-
-        println "cleaned successfully"
-    }
+tasks.register("myClean", MyCleanTask) {
+    group = 'opi-lab3'
+    description = 'удаление скомпилированных классов и временных файлов'
 }
 
-tasks.register("myCompileTest") {
-    group = "opi-lab3"
-    description = "компиляция тестовых файлов"
+tasks.register("myCompileTest", MyCompileTestsTask) {
+    group = 'opi-lab3'
+    description = 'компиляция тестовых файлов'
 
     dependsOn("myCompile")
 
-    inputs.files(fileTree(dir: testSrcDir, includes: ["**/*.java"]))
-    inputs.dir(classesDir)
-    outputs.dir(testClassesDir)
-
-    doLast {
-        println "compiling test files..."
-
-        def destDir = testClassesDir.get().asFile
-        destDir.mkdirs()
-
-        def srcPaths = fileTree(dir: testSrcDir, includes: ["**/*.java"]).files*.path
-        if (srcPaths.isEmpty()) {
-            println "не найдено тестов особо"
-            return
-        }
-
-        def classpath = sourceSets.main.compileClasspath.asPath +   // main зависимости
-                File.pathSeparator +
-                sourceSets.test.compileClasspath.asPath +           // test зависимости
-                File.pathSeparator +
-                classesDir.get().asFile.absolutePath                // скомпилированные main классы
-
-        def cmd = ["javac", "-d", destDir.absolutePath, "-cp", classpath] + srcPaths
-        exec {
-            commandLine cmd
-        }
-
-        println "test files compiled successfully"
-    }
+    testSources.from(fileTree(dir: testSrcDir, includes: ['**/*.java']))
+    mainClassesDir = srcClassesDir
+    testClassesDir = testClassDir
 }
 
-tasks.register("myTest") {
-    group = "opi-lab3"
-    description = "запуск junit-тестов проекта"
+tasks.register("myTest", MyTestTask) {
+    group = 'opi-lab3'
+    description = 'запуск junit-тестов проекта'
 
     dependsOn("myCompileTest")
 
-    doLast {
-        println "проверяем тесты..."
-
-        def testDir = testClassesDir.get().asFile.absolutePath  // test .class
-        def mainDir = classesDir.get().asFile.absolutePath      // main .class
-
-        def classpath = sourceSets.test.runtimeClasspath.asPath +       // JUnit & other dependencies
-                File.pathSeparator +
-                mainDir +
-                File.pathSeparator +
-                testDir
-
-        exec {
-            workingDir = projectDir
-            commandLine = [
-                    'java',
-                    '-cp', classpath,
-                    'org.junit.platform.console.ConsoleLauncher',
-                    '--scan-classpath',
-                    '--details=tree'
-            ]
-        }
-
-        println "тесты успешно завершили свое выполнение"
-    }
+    mainClassesDir = srcClassesDir
+    testClassesDir = testClassDir
 }
 
-// инкапсулировать в класс в build_src через класс всю логику тасок
-
-tasks.register("music") {
-    group = "opi-lab3"
-    description = "воспроизведение музыки по завершению сборки"
-
-    // тут расхождение, немного не однозначно для меня "цель build" в условии
-    // 1. запуск таски music, которая запускает сборку, если она еще не выполнена
-    dependsOn("myBuild")
-
-    // 2. после таски build обязана проиграть музыка в любом случае
-//  mustRunAfter("myBuild")
-
-    doLast {
-        def soundFile = file(soundsSuccess)
-        if (soundFile.exists()) {
-            println "success sound..."
-            try {
-                def audio = AudioSystem.getAudioInputStream(soundFile)
-                Clip clip = AudioSystem.getClip()
-                clip.open(audio)
-                clip.loop(2)
-                println "sound successfully played"
-            } catch (Exception e) {
-                println "Ошибка воспроизведения: ${e.message}"
-            }
-        } else {
-            println "Файл ${soundsSuccess} не найден :(:(:("
-        }
-    }
-}
-
-tasks.register("env") {
-    group = "opi-lab3"
-    description = "осуществляет сборку и запуск программы в альтернативных окружениях; окружение задается версией java и набором аргументов виртуальной машины в файле параметров"
+tasks.register("music", MusicTask) {
+    group = 'opi-lab3'
+    description = 'воспроизведение музыки по завершению сборки'
 
     dependsOn("myBuild")
 
-    def javaExe = project.hasProperty('env.java.executable') ? project.property('env.java.executable') : 'java'
-    def jvmArgsStr = project.hasProperty('env.jvm.args') ? project.property('env.jvm.args') : ''
-    def appArgsStr = project.hasProperty('env.app.args') ? project.property('env.app.args') : ''
-    def jvmArgsList = jvmArgsStr.split(" ").findAll { !it.trim().isEmpty() }
-    def appArgsList = appArgsStr.split(" ").findAll { !it.trim().isEmpty() }
+    it.soundFile = soundFile
+}
 
-    doLast {
-        def jarPath = jarFile.get().asFile.absolutePath
+tasks.register("env", EnvTask) {
+    group = 'opi-lab3'
+    description = 'сборка и запуск в альтернативном окружении'
 
-        def cmd = [javaExe]
-        cmd.addAll(jvmArgsList)
-        cmd.addAll(['-jar', jarPath])
-        cmd.addAll(appArgsList)
+    dependsOn("myBuild")
 
-        println "----- Запуск приложения в альтернативном оокружении -----"
-        println "----- Используемая Java:   ${javaExe}"
-        println "----- Аргументы JVM:       ${jvmArgsList}"
-        println "----- App args:            ${appArgsList}"
-        println "----- Команда:             ${cmd.join(' ')}"
-
-        exec {
-            commandLine cmd
-        }
-
-    }
+    jarFile = outJarFile
+    javaExecutable = (project.findProperty('env.java.executable') ?: 'java') as String
+    jvmArgs = ((project.findProperty('env.jvm.args') ?: '') as String)
+            .split(' ').findAll { !it.trim().isEmpty() }
+    appArgs = ((project.findProperty('env.app.args') ?: '') as String)
+            .split(' ').findAll { !it.trim().isEmpty() }
 }
 
 dependencies {
@@ -320,42 +111,21 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter'
     testImplementation 'org.junit.platform:junit-platform-console'
 
+    compileOnly 'org.projectlombok:lombok:1.18.36'
+    annotationProcessor 'org.projectlombok:lombok:1.18.36'
 
-    // lombok
-    compileOnly "org.projectlombok:lombok:1.18.36"
-    annotationProcessor "org.projectlombok:lombok:1.18.36"
-
-    // JSF
     implementation 'jakarta.faces:jakarta.faces-api:3.0.0'
     implementation 'org.glassfish:jakarta.faces:3.0.0'
-
-    // JPA API
-    implementation("jakarta.persistence:jakarta.persistence-api:3.1.0")
-
-    // PrimeFaces
+    implementation 'jakarta.persistence:jakarta.persistence-api:3.1.0'
     implementation 'org.primefaces:primefaces:12.0.0:jakarta'
-
-    // EL
     implementation 'jakarta.el:jakarta.el-api:5.0.0'
-
-    // Hibernate
     implementation 'org.hibernate:hibernate-gradle-plugin:5.6.15.Final'
-
-    // Jakarta CDI & Transactions
     implementation 'jakarta.enterprise:jakarta.enterprise.cdi-api:3.0.0'
     implementation 'jakarta.transaction:jakarta.transaction-api:2.0.0'
-
-    // GSON
     implementation 'com.google.code.gson:gson:2.7'
 
-    // Servlet API (используется для вычленения IP)
     compileOnly 'jakarta.servlet:jakarta.servlet-api:5.0.0'
 }
 
-test {
-    useJUnitPlatform()
-}
-
-war {
-    webAppDirName = 'src/main/webapp'
-}
+test { useJUnitPlatform() }
+war { webAppDirName = 'src/main/webapp' }
