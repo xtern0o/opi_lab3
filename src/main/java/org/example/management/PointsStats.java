@@ -12,13 +12,14 @@ import java.util.concurrent.atomic.AtomicLong;
 @Named("pointsStats")
 public class PointsStats extends NotificationBroadcasterSupport implements PointsStatsMBean {
     /**
-     * Границы отображаемой области координатной плоскости [-5; 5]
+     * Границы координатной плоскости [-5; 5]
      */
     private static final float DISPLAY_LIMIT = 5f;
 
     private final AtomicLong totalPoints = new AtomicLong();
     private final AtomicLong missedPoints = new AtomicLong();
     private final AtomicLong notificationSequence = new AtomicLong();
+    private final AtomicLong totalClicks = new AtomicLong();
 
     @Override
     public long getTotalPoints() {
@@ -31,9 +32,15 @@ public class PointsStats extends NotificationBroadcasterSupport implements Point
     }
 
     @Override
+    public long getTotalClicks() {
+        return totalClicks.get();
+    }
+
+    @Override
     public void reset() {
         totalPoints.set(0);
         missedPoints.set(0);
+        totalClicks.set(0);
     }
 
     public void addPoint(Point point) {
@@ -52,6 +59,10 @@ public class PointsStats extends NotificationBroadcasterSupport implements Point
                     String.format("(x=%s, y=%s) out of observable bounds [-5; 5]",
                             point.getX(), point.getY())));
         }
+    }
+
+    public void recordClick() {
+        totalClicks.incrementAndGet();
     }
 
     private boolean isOutOfDisplayArea(Point point) {

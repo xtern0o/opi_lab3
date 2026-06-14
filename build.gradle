@@ -22,6 +22,31 @@ def webappDir = layout.projectDirectory.dir("src/main/webapp")
 def resourcesDir = layout.projectDirectory.dir("src/main/resources")
 def soundFile = layout.projectDirectory.file("music/sound-success.wav")
 
+// читаем .env
+def loadDotEnv = { ->
+    def envFile = layout.projectDirectory.file('.env').asFile
+    def result = [:]
+    if (!envFile.exists()) {
+        println "build.gradle: .env не найден (${envFile}), пропускаем"
+        return result
+    }
+    envFile.eachLine { rawLine ->
+        def line = rawLine.trim()
+        if (line.isEmpty() || line.startsWith('#')) return
+        def idx = line.indexOf('=')
+        if (idx < 0) return
+        def key = line.substring(0, idx).trim()
+        def value = line.substring(idx + 1).trim()
+        if (value.length() >= 2 &&
+                ((value.startsWith('"') && value.endsWith('"')) ||
+                 (value.startsWith("'") && value.endsWith("'")))) {
+            value = value.substring(1, value.length() - 1)
+        }
+        result[key] = value
+    }
+    return result
+}
+
 
 tasks.register("myCompile", MyCompileTask) {
     group = 'opi-lab3'
@@ -104,6 +129,7 @@ tasks.register("env", EnvTask) {
             .split(' ').findAll { !it.trim().isEmpty() }
     appArgs = ((project.findProperty('env.app.args') ?: '') as String)
             .split(' ').findAll { !it.trim().isEmpty() }
+    environmentVars.putAll(loadDotEnv())
 }
 
 dependencies {

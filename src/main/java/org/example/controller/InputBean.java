@@ -124,6 +124,8 @@ public class InputBean implements Serializable {
         String y = facesContext.getExternalContext().getRequestParameterMap().get("y");
         List<String> rList = (List<String>) new Gson().fromJson(facesContext.getExternalContext().getRequestParameterMap().get("rList"), List.class);
 
+        pointsStatistics.recordClick();
+
         List<Point> points = new CopyOnWriteArrayList<>();
         rList.forEach(
                 (r) -> points.add(

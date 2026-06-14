@@ -10,101 +10,126 @@
 
 =========================================================================
 
-[0m18:18:16,450 INFO  [org.jboss.modules] (main) JBoss Modules version 2.1.6.Final
-[0m[0m18:18:17,115 INFO  [org.jboss.msc] (main) JBoss MSC version 1.5.6.Final
-[0m[0m18:18:17,260 INFO  [org.jboss.as] (MSC service thread 1-2) WFLYSRV0049: WildFly 39.0.1.Final (WildFly Core 31.0.3.Final) starting
-[0m[0m18:18:18,687 INFO  [org.wildfly.security] (Controller Boot Thread) ELY00001: WildFly Elytron version 2.8.2.Final
-[0m[0m18:18:19,715 INFO  [org.jboss.as.server] (Controller Boot Thread) WFLYSRV0039: Creating http management service using socket-binding (management-http)
-[0m[0m18:18:19,745 INFO  [org.xnio] (MSC service thread 1-8) XNIO version 3.8.16.Final
-[0m[0m18:18:19,763 INFO  [org.xnio.nio] (MSC service thread 1-8) XNIO NIO Implementation Version 3.8.16.Final
-[0m[0m18:18:19,827 INFO  [org.wildfly.extension.health] (ServerService Thread Pool -- 55) WFLYHEALTH0001: Activating Base Health Subsystem
-[0m[0m18:18:19,829 INFO  [org.wildfly.extension.elytron.oidc._private] (ServerService Thread Pool -- 54) WFLYOIDC0001: Activating WildFly Elytron OIDC Subsystem
-[0m[0m18:18:19,830 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 56) WFLYCLINF0001: Activating Infinispan subsystem.
-[0m[0m18:18:19,836 INFO  [org.jboss.as.jaxrs] (ServerService Thread Pool -- 58) WFLYRS0016: RESTEasy version 6.2.15.Final
-[0m[0m18:18:19,842 INFO  [org.wildfly.extension.microprofile.config.smallrye] (ServerService Thread Pool -- 66) WFLYCONF0001: Activating MicroProfile Config Subsystem
-[0m[0m18:18:19,846 INFO  [org.wildfly.extension.microprofile.jwt.smallrye] (ServerService Thread Pool -- 67) WFLYJWT0001: Activating MicroProfile JWT Subsystem
-[0m[33m18:18:19,844 WARN  [org.jboss.as.txn] (ServerService Thread Pool -- 75) WFLYTX0013: The node-identifier attribute on the /subsystem=transactions is set to the default value. This is a danger for environments running multiple servers. Please make sure the attribute value is unique.
-[0m[0m18:18:19,858 INFO  [org.wildfly.extension.io] (ServerService Thread Pool -- 57) WFLYIO001: Worker 'default' has auto-configured to 24 IO threads with 192 max task threads based on your 12 available processors
-[0m[0m18:18:19,857 INFO  [org.jboss.as.naming] (ServerService Thread Pool -- 68) WFLYNAM0001: Activating Naming Subsystem
-[0m[0m18:18:19,864 INFO  [org.jboss.as.webservices] (ServerService Thread Pool -- 77) WFLYWS0002: Activating WebServices Extension
-[0m[0m18:18:19,863 INFO  [org.jboss.as.jsf] (ServerService Thread Pool -- 63) WFLYJSF0007: Activated the following Jakarta Server Faces Implementations: [main]
-[0m[0m18:18:19,874 INFO  [org.wildfly.extension.metrics] (ServerService Thread Pool -- 65) WFLYMETRICS0001: Activating Base Metrics Subsystem
-[0m[0m18:18:19,882 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-4) WFLYSRV0027: Starting deployment of "postgresql-42.7.8.jar" (runtime-name: "postgresql-42.7.8.jar")
-[0m[0m18:18:19,884 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-2) WFLYSRV0027: Starting deployment of "opi_lab3.war" (runtime-name: "opi_lab3.war")
-[0m[0m18:18:19,901 INFO  [org.jboss.as.connector] (MSC service thread 1-2) WFLYJCA0009: Starting Jakarta Connectors Subsystem (WildFly/IronJacamar 3.0.18.Final)
-[0m[0m18:18:19,923 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 45) WFLYJCA0004: Deploying JDBC-compliant driver class org.h2.Driver (version 2.2)
-[0m[0m18:18:19,930 INFO  [org.jboss.remoting] (MSC service thread 1-8) JBoss Remoting version 5.0.31.Final
-[0m[0m18:18:19,945 INFO  [org.jboss.as.naming] (MSC service thread 1-6) WFLYNAM0003: Starting Naming Service
-[0m[0m18:18:19,957 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-9) WFLYJCA0018: Started Driver service with driver-name = h2
-[0m[0m18:18:19,968 INFO  [org.jboss.as.mail.extension] (MSC service thread 1-2) WFLYMAIL0001: Bound mail session [java:jboss/mail/Default]
-[0m[0m18:18:19,982 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-2) WFLYUT0003: Undertow 2.3.23.Final starting
-[0m[33m18:18:20,021 WARN  [org.wildfly.extension.elytron] (MSC service thread 1-8) WFLYELY00023: KeyStore file '/home/maxkarn/Desktop/wildfly/wildfly-39.0.1.Final/standalone/configuration/application.keystore' does not exist. Used blank.
-[0m[0m18:18:20,064 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 76) WFLYUT0112: The value 'require-host-http11' attribute in the '/subsystem=undertow/server=default-server/http-listener=default' resource is 'false', which will be ignored. The server now always enforces the RFC 9112 requirement that HTTP/1.1 request messages include a Host header.
-[0m[33m18:18:20,069 WARN  [org.wildfly.extension.elytron] (MSC service thread 1-2) WFLYELY01084: KeyStore /home/maxkarn/Desktop/wildfly/wildfly-39.0.1.Final/standalone/configuration/application.keystore not found, it will be auto-generated on first use with a self-signed certificate for host localhost
-[0m[0m18:18:20,081 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 76) WFLYUT0112: The value 'require-host-http11' attribute in the '/subsystem=undertow/server=default-server/https-listener=https' resource is 'false', which will be ignored. The server now always enforces the RFC 9112 requirement that HTTP/1.1 request messages include a Host header.
-[0m[0m18:18:20,111 INFO  [org.jboss.as.ejb3] (MSC service thread 1-7) WFLYEJB0482: Strict pool mdb-strict-max-pool is using a max instance size of 48 (per class), which is derived from the number of CPUs on this host.
-[0m[0m18:18:20,112 INFO  [org.jboss.as.ejb3] (MSC service thread 1-9) WFLYEJB0481: Strict pool slsb-strict-max-pool is using a max instance size of 192 (per class), which is derived from thread worker pool sizing.
-[0m[0m18:18:20,142 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 76) WFLYUT0014: Creating file handler for path '/home/maxkarn/Desktop/wildfly/wildfly-39.0.1.Final/welcome-content' with options [directory-listing: 'false', follow-symlink: 'false', case-sensitive: 'true', safe-symlink-paths: '[]']
-[0m[0m18:18:20,150 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-6) WFLYUT0012: Started server default-server.
-[0m[0m18:18:20,152 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-7) Queuing requests.
-[0m[0m18:18:20,154 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-7) WFLYUT0018: Host default-host starting
-[0m[0m18:18:20,215 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-2) WFLYUT0006: Undertow HTTP listener default listening on 127.0.0.1:8080
-[0m[0m18:18:20,270 INFO  [org.jboss.as.ejb3] (MSC service thread 1-8) WFLYEJB0493: Jakarta Enterprise Beans subsystem suspension complete
-[0m[0m18:18:20,329 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-3) WFLYUT0006: Undertow HTTPS listener https listening on 127.0.0.1:8443
-[0m[0m18:18:20,346 INFO  [org.jboss.as.server.deployment.scanner] (MSC service thread 1-9) WFLYDS0013: Started FileSystemDeploymentService for directory /home/maxkarn/Desktop/wildfly/wildfly-39.0.1.Final/standalone/deployments
-[0m[0m18:18:20,366 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-3) WFLYJCA0001: Bound data source [java:jboss/datasources/ExampleDS]
-[0m[0m18:18:20,452 INFO  [org.jboss.ws.common.management] (MSC service thread 1-6) JBWS022052: Starting JBossWS 7.3.7.Final (Apache CXF 4.0.10) 
-[0m[0m18:18:21,262 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-6) WFLYJCA0005: Deploying non-JDBC-compliant driver class org.postgresql.Driver (version 42.7)
-[0m[0m18:18:21,293 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-7) WFLYJCA0018: Started Driver service with driver-name = postgresql-42.7.8.jar
-[0m[0m18:18:24,520 INFO  [org.jboss.as.jpa] (MSC service thread 1-6) WFLYJPA0002: Read persistence.xml for Points
-[0m[0m18:18:24,769 INFO  [org.jipijapa] (MSC service thread 1-7) JIPIORMV6020260: Second level cache enabled for opi_lab3.war#Points
-[0m[0m18:18:24,978 INFO  [org.jboss.weld.deployer] (MSC service thread 1-8) WFLYWELD0003: Processing weld deployment opi_lab3.war
-[0m[0m18:18:25,431 INFO  [org.hibernate.validator.internal.util.Version] (MSC service thread 1-8) HV000001: Hibernate Validator 8.0.3.Final
-[0m[0m18:18:25,499 INFO  [org.infinispan.CONTAINER] (ServerService Thread Pool -- 79) ISPN000974: Virtual threads support: unavailable
-[0m[0m18:18:26,205 INFO  [org.jipijapa] (MSC service thread 1-4) JIPIORMV6020260: Second level cache enabled for opi_lab3.war#Points
-[0m[0m18:18:26,506 INFO  [org.infinispan.CONTAINER] (ServerService Thread Pool -- 79) ISPN000556: Starting user marshaller 'org.wildfly.clustering.cache.infinispan.marshalling.UserMarshaller'
-[0m[0m18:18:26,684 INFO  [org.jboss.weld.Version] (MSC service thread 1-4) WELD-000900: 5.1.6 (Final)
-[0m[0m18:18:27,120 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 79) Started hibernate cache container
-[0m[0m18:18:27,133 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 79) WFLYJPA0010: Starting Persistence Unit (phase 1 of 2) Service 'opi_lab3.war#Points'
-[0m[0m18:18:27,154 INFO  [org.hibernate.jpa.internal.util.LogHelper] (ServerService Thread Pool -- 79) HHH000204: Processing PersistenceUnitInfo [name: Points]
-[0m[0m18:18:27,233 INFO  [org.hibernate.Version] (ServerService Thread Pool -- 79) HHH000412: Hibernate ORM core version 6.6.40.Final
-[0m[33m18:18:27,586 WARN  [org.hibernate.dialect.Dialect] (ServerService Thread Pool -- 79) HHH000511: The 2.2.224 version for [org.hibernate.dialect.PostgreSQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 12.0.0. Check the community dialects project for available legacy versions.
-[0m[33m18:18:27,595 WARN  [org.hibernate.orm.deprecation] (ServerService Thread Pool -- 79) HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-[0m[0m18:18:27,612 INFO  [org.hibernate.orm.connections.pooling] (ServerService Thread Pool -- 79) HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'org.jboss.as.connector.subsystems.datasources.WildFlyDataSource@3d17ac5b']
+[0m19:18:57,787 INFO  [org.jboss.modules] (main) JBoss Modules version 2.1.6.Final
+[0m[0m19:18:58,196 INFO  [org.jboss.msc] (main) JBoss MSC version 1.5.6.Final
+[0m[0m19:18:58,292 INFO  [org.jboss.as] (MSC service thread 1-4) WFLYSRV0049: WildFly 39.0.1.Final (WildFly Core 31.0.3.Final) starting
+[0m[0m19:18:58,939 INFO  [org.wildfly.security] (Controller Boot Thread) ELY00001: WildFly Elytron version 2.8.2.Final
+[0m[0m19:18:59,408 INFO  [org.jboss.as.server] (Controller Boot Thread) WFLYSRV0039: Creating http management service using socket-binding (management-http)
+[0m[0m19:18:59,419 INFO  [org.xnio] (MSC service thread 1-7) XNIO version 3.8.16.Final
+[0m[0m19:18:59,426 INFO  [org.xnio.nio] (MSC service thread 1-7) XNIO NIO Implementation Version 3.8.16.Final
+[0m[0m19:18:59,440 INFO  [org.wildfly.extension.elytron.oidc._private] (ServerService Thread Pool -- 54) WFLYOIDC0001: Activating WildFly Elytron OIDC Subsystem
+[0m[0m19:18:59,444 INFO  [org.wildfly.extension.health] (ServerService Thread Pool -- 55) WFLYHEALTH0001: Activating Base Health Subsystem
+[0m[0m19:18:59,446 INFO  [org.jboss.as.jaxrs] (ServerService Thread Pool -- 58) WFLYRS0016: RESTEasy version 6.2.15.Final
+[0m[0m19:18:59,447 INFO  [org.wildfly.extension.io] (ServerService Thread Pool -- 57) WFLYIO001: Worker 'default' has auto-configured to 24 IO threads with 192 max task threads based on your 12 available processors
+[0m[0m19:18:59,447 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 56) WFLYCLINF0001: Activating Infinispan subsystem.
+[0m[33m19:18:59,450 WARN  [org.jboss.as.txn] (ServerService Thread Pool -- 75) WFLYTX0013: The node-identifier attribute on the /subsystem=transactions is set to the default value. This is a danger for environments running multiple servers. Please make sure the attribute value is unique.
+[0m[0m19:18:59,450 INFO  [org.wildfly.extension.microprofile.jwt.smallrye] (ServerService Thread Pool -- 67) WFLYJWT0001: Activating MicroProfile JWT Subsystem
+[0m[0m19:18:59,449 INFO  [org.wildfly.extension.microprofile.config.smallrye] (ServerService Thread Pool -- 66) WFLYCONF0001: Activating MicroProfile Config Subsystem
+[0m[0m19:18:59,456 INFO  [org.jboss.as.naming] (ServerService Thread Pool -- 68) WFLYNAM0001: Activating Naming Subsystem
+[0m[0m19:18:59,457 INFO  [org.jboss.as.jsf] (ServerService Thread Pool -- 63) WFLYJSF0007: Activated the following Jakarta Server Faces Implementations: [main]
+[0m[0m19:18:59,456 INFO  [org.wildfly.extension.metrics] (ServerService Thread Pool -- 65) WFLYMETRICS0001: Activating Base Metrics Subsystem
+[0m[0m19:18:59,464 INFO  [org.jboss.as.webservices] (ServerService Thread Pool -- 77) WFLYWS0002: Activating WebServices Extension
+[0m[0m19:18:59,465 INFO  [org.jboss.as.connector] (MSC service thread 1-9) WFLYJCA0009: Starting Jakarta Connectors Subsystem (WildFly/IronJacamar 3.0.18.Final)
+[0m[0m19:18:59,474 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-5) WFLYSRV0027: Starting deployment of "postgresql-42.7.8.jar" (runtime-name: "postgresql-42.7.8.jar")
+[0m[0m19:18:59,475 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-4) WFLYSRV0027: Starting deployment of "opi_lab3.war" (runtime-name: "opi_lab3.war")
+[0m[0m19:18:59,482 INFO  [org.jboss.remoting] (MSC service thread 1-6) JBoss Remoting version 5.0.31.Final
+[0m[0m19:18:59,486 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 45) WFLYJCA0004: Deploying JDBC-compliant driver class org.h2.Driver (version 2.2)
+[0m[0m19:18:59,505 INFO  [org.jboss.as.naming] (MSC service thread 1-4) WFLYNAM0003: Starting Naming Service
+[0m[0m19:18:59,505 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-2) WFLYJCA0018: Started Driver service with driver-name = h2
+[0m[0m19:18:59,509 INFO  [org.jboss.as.mail.extension] (MSC service thread 1-9) WFLYMAIL0001: Bound mail session [java:jboss/mail/Default]
+[0m[0m19:18:59,534 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-2) WFLYUT0003: Undertow 2.3.23.Final starting
+[0m[33m19:18:59,550 WARN  [org.wildfly.extension.elytron] (MSC service thread 1-7) WFLYELY00023: KeyStore file '/home/maxkarn/Desktop/wildfly/wildfly-39.0.1.Final/standalone/configuration/application.keystore' does not exist. Used blank.
+[0m[0m19:18:59,560 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 76) WFLYUT0112: The value 'require-host-http11' attribute in the '/subsystem=undertow/server=default-server/http-listener=default' resource is 'false', which will be ignored. The server now always enforces the RFC 9112 requirement that HTTP/1.1 request messages include a Host header.
+[0m[0m19:18:59,565 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 76) WFLYUT0112: The value 'require-host-http11' attribute in the '/subsystem=undertow/server=default-server/https-listener=https' resource is 'false', which will be ignored. The server now always enforces the RFC 9112 requirement that HTTP/1.1 request messages include a Host header.
+[0m[0m19:18:59,572 INFO  [org.jboss.as.ejb3] (MSC service thread 1-4) WFLYEJB0482: Strict pool mdb-strict-max-pool is using a max instance size of 48 (per class), which is derived from the number of CPUs on this host.
+[0m[0m19:18:59,572 INFO  [org.jboss.as.ejb3] (MSC service thread 1-3) WFLYEJB0481: Strict pool slsb-strict-max-pool is using a max instance size of 192 (per class), which is derived from thread worker pool sizing.
+[0m[33m19:18:59,576 WARN  [org.wildfly.extension.elytron] (MSC service thread 1-9) WFLYELY01084: KeyStore /home/maxkarn/Desktop/wildfly/wildfly-39.0.1.Final/standalone/configuration/application.keystore not found, it will be auto-generated on first use with a self-signed certificate for host localhost
+[0m[0m19:18:59,615 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 76) WFLYUT0014: Creating file handler for path '/home/maxkarn/Desktop/wildfly/wildfly-39.0.1.Final/welcome-content' with options [directory-listing: 'false', follow-symlink: 'false', case-sensitive: 'true', safe-symlink-paths: '[]']
+[0m[0m19:18:59,620 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-9) WFLYUT0012: Started server default-server.
+[0m[0m19:18:59,622 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-3) Queuing requests.
+[0m[0m19:18:59,624 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-3) WFLYUT0018: Host default-host starting
+[0m[0m19:18:59,658 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-8) WFLYUT0006: Undertow HTTP listener default listening on 127.0.0.1:8080
+[0m[0m19:18:59,671 INFO  [org.jboss.as.ejb3] (MSC service thread 1-3) WFLYEJB0493: Jakarta Enterprise Beans subsystem suspension complete
+[0m[0m19:18:59,712 INFO  [org.jboss.as.server.deployment.scanner] (MSC service thread 1-2) WFLYDS0013: Started FileSystemDeploymentService for directory /home/maxkarn/Desktop/wildfly/wildfly-39.0.1.Final/standalone/deployments
+[0m[0m19:18:59,726 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-9) WFLYJCA0001: Bound data source [java:jboss/datasources/ExampleDS]
+[0m[0m19:18:59,729 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-3) WFLYUT0006: Undertow HTTPS listener https listening on 127.0.0.1:8443
+[0m[0m19:18:59,812 INFO  [org.jboss.ws.common.management] (MSC service thread 1-7) JBWS022052: Starting JBossWS 7.3.7.Final (Apache CXF 4.0.10) 
+[0m[0m19:19:00,226 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-7) WFLYJCA0005: Deploying non-JDBC-compliant driver class org.postgresql.Driver (version 42.7)
+[0m[0m19:19:00,234 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-4) WFLYJCA0018: Started Driver service with driver-name = postgresql-42.7.8.jar
+[0m[0m19:19:01,742 INFO  [org.jboss.as.jpa] (MSC service thread 1-3) WFLYJPA0002: Read persistence.xml for Points
+[0m[0m19:19:01,869 INFO  [org.jipijapa] (MSC service thread 1-2) JIPIORMV6020260: Second level cache enabled for opi_lab3.war#Points
+[0m[0m19:19:02,024 INFO  [org.jboss.weld.deployer] (MSC service thread 1-6) WFLYWELD0003: Processing weld deployment opi_lab3.war
+[0m[0m19:19:02,161 INFO  [org.infinispan.CONTAINER] (ServerService Thread Pool -- 79) ISPN000974: Virtual threads support: unavailable
+[0m[0m19:19:02,186 INFO  [org.hibernate.validator.internal.util.Version] (MSC service thread 1-6) HV000001: Hibernate Validator 8.0.3.Final
+[0m[0m19:19:02,379 INFO  [org.jipijapa] (MSC service thread 1-4) JIPIORMV6020260: Second level cache enabled for opi_lab3.war#Points
+[0m[0m19:19:02,477 INFO  [org.infinispan.CONTAINER] (ServerService Thread Pool -- 79) ISPN000556: Starting user marshaller 'org.wildfly.clustering.cache.infinispan.marshalling.UserMarshaller'
+[0m[0m19:19:02,611 INFO  [org.jboss.weld.Version] (MSC service thread 1-4) WELD-000900: 5.1.6 (Final)
+[0m[0m19:19:02,795 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 79) Started hibernate cache container
+[0m[0m19:19:02,800 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 79) WFLYJPA0010: Starting Persistence Unit (phase 1 of 2) Service 'opi_lab3.war#Points'
+[0m[0m19:19:02,818 INFO  [org.hibernate.jpa.internal.util.LogHelper] (ServerService Thread Pool -- 79) HHH000204: Processing PersistenceUnitInfo [name: Points]
+[0m[0m19:19:02,885 INFO  [org.hibernate.Version] (ServerService Thread Pool -- 79) HHH000412: Hibernate ORM core version 6.6.40.Final
+[0m[33m19:19:03,211 WARN  [org.hibernate.dialect.Dialect] (ServerService Thread Pool -- 79) HHH000511: The 2.2.224 version for [org.hibernate.dialect.PostgreSQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 12.0.0. Check the community dialects project for available legacy versions.
+[0m[33m19:19:03,217 WARN  [org.hibernate.orm.deprecation] (ServerService Thread Pool -- 79) HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+[0m[0m19:19:03,229 INFO  [org.hibernate.orm.connections.pooling] (ServerService Thread Pool -- 79) HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'org.jboss.as.connector.subsystems.datasources.WildFlyDataSource@45b4e827']
 	Database driver: undefined/unknown
 	Database version: 2.2.224
 	Autocommit mode: undefined/unknown
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-[0m[0m18:18:27,619 INFO  [org.hibernate.cache.internal.RegionFactoryInitiator] (ServerService Thread Pool -- 79) HHH000025: Second-level cache region factory [org.infinispan.hibernate.cache.v6.InfinispanRegionFactory]
-[0m[0m18:18:27,715 INFO  [org.hibernate.envers.boot.internal.EnversServiceImpl] (ServerService Thread Pool -- 79) Envers integration enabled? : true
-[0m[0m18:18:27,966 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 79) WFLYJPA0010: Starting Persistence Unit (phase 2 of 2) Service 'opi_lab3.war#Points'
-[0m[0m18:18:29,221 INFO  [stdout] (ServerService Thread Pool -- 79) Hibernate: 
-[0m[0m18:18:29,222 INFO  [stdout] (ServerService Thread Pool -- 79)     create table points (
-[0m[0m18:18:29,222 INFO  [stdout] (ServerService Thread Pool -- 79)         id bigint generated by default as identity,
-[0m[0m18:18:29,222 INFO  [stdout] (ServerService Thread Pool -- 79)         created_at timestamp(6) with time zone not null,
-[0m[0m18:18:29,222 INFO  [stdout] (ServerService Thread Pool -- 79)         hit boolean not null,
-[0m[0m18:18:29,222 INFO  [stdout] (ServerService Thread Pool -- 79)         r float4 not null,
-[0m[0m18:18:29,222 INFO  [stdout] (ServerService Thread Pool -- 79)         temperature float4,
-[0m[0m18:18:29,223 INFO  [stdout] (ServerService Thread Pool -- 79)         x float4 not null,
-[0m[0m18:18:29,223 INFO  [stdout] (ServerService Thread Pool -- 79)         y float4 not null,
-[0m[0m18:18:29,223 INFO  [stdout] (ServerService Thread Pool -- 79)         primary key (id)
-[0m[0m18:18:29,223 INFO  [stdout] (ServerService Thread Pool -- 79)     )
-[0m[0m18:18:30,619 INFO  [jakarta.enterprise.resource.webcontainer.faces.config] (ServerService Thread Pool -- 87) Initializing Mojarra 4.0.13 for context '/opi_lab3'
-[0m[0m18:18:31,916 INFO  [org.primefaces.webapp.PostConstructApplicationEventListener] (ServerService Thread Pool -- 87) Running on PrimeFaces 12.0.0
-[0m[0m18:18:31,942 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 87) WFLYUT0021: Registered web context: '/opi_lab3' for server 'default-server'
-[0m[0m18:18:32,031 INFO  [org.jboss.as.server] (ServerService Thread Pool -- 46) WFLYSRV0010: Deployed "opi_lab3.war" (runtime-name : "opi_lab3.war")
-[0m[0m18:18:32,033 INFO  [org.jboss.as.server] (ServerService Thread Pool -- 46) WFLYSRV0010: Deployed "postgresql-42.7.8.jar" (runtime-name : "postgresql-42.7.8.jar")
-[0m[0m18:18:32,097 INFO  [org.jboss.as.server] (Controller Boot Thread) WFLYSRV0212: Resuming server
-[0m[0m18:18:32,106 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0060: Http management interface listening on http://127.0.0.1:9990/management
-[0m[0m18:18:32,107 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0051: Admin console listening on http://127.0.0.1:9990
-[0m[0m18:18:32,110 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0025: WildFly 39.0.1.Final (WildFly Core 31.0.3.Final) started in 16123ms - Started 809 of 999 services (338 services are lazy, passive or on-demand) - Server configuration file in use: standalone.xml - Minimum feature stability level: community
-[0m[0m18:18:32,336 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 16) WFLYUT0022: Unregistered web context: '/opi_lab3' from server 'default-server'
-[0m[31m18:18:32,341 ERROR [io.undertow.request] (default task-2) UT005023: Exception handling request to /opi_lab3/: java.lang.NullPointerException: Cannot invoke "jakarta.faces.lifecycle.Lifecycle.render(jakarta.faces.context.FacesContext)" because "this.lifecycle" is null
-	at jakarta.faces.impl@4.0.13//jakarta.faces.webapp.FacesServlet.executeLifecyle(FacesServlet.java:692)
-	at jakarta.faces.impl@4.0.13//jakarta.faces.webapp.FacesServlet.service(FacesServlet.java:449)
+[0m[0m19:19:03,234 INFO  [org.hibernate.cache.internal.RegionFactoryInitiator] (ServerService Thread Pool -- 79) HHH000025: Second-level cache region factory [org.infinispan.hibernate.cache.v6.InfinispanRegionFactory]
+[0m[0m19:19:03,296 INFO  [org.hibernate.envers.boot.internal.EnversServiceImpl] (ServerService Thread Pool -- 79) Envers integration enabled? : true
+[0m[0m19:19:03,514 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 79) WFLYJPA0010: Starting Persistence Unit (phase 2 of 2) Service 'opi_lab3.war#Points'
+[0m[0m19:19:04,471 INFO  [stdout] (ServerService Thread Pool -- 79) Hibernate: 
+[0m[0m19:19:04,471 INFO  [stdout] (ServerService Thread Pool -- 79)     create table points (
+[0m[0m19:19:04,471 INFO  [stdout] (ServerService Thread Pool -- 79)         id bigint generated by default as identity,
+[0m[0m19:19:04,471 INFO  [stdout] (ServerService Thread Pool -- 79)         created_at timestamp(6) with time zone not null,
+[0m[0m19:19:04,471 INFO  [stdout] (ServerService Thread Pool -- 79)         hit boolean not null,
+[0m[0m19:19:04,471 INFO  [stdout] (ServerService Thread Pool -- 79)         r float4 not null,
+[0m[0m19:19:04,471 INFO  [stdout] (ServerService Thread Pool -- 79)         temperature float4,
+[0m[0m19:19:04,471 INFO  [stdout] (ServerService Thread Pool -- 79)         x float4 not null,
+[0m[0m19:19:04,472 INFO  [stdout] (ServerService Thread Pool -- 79)         y float4 not null,
+[0m[0m19:19:04,472 INFO  [stdout] (ServerService Thread Pool -- 79)         primary key (id)
+[0m[0m19:19:04,472 INFO  [stdout] (ServerService Thread Pool -- 79)     )
+[0m[0m19:19:05,027 INFO  [jakarta.enterprise.resource.webcontainer.faces.config] (ServerService Thread Pool -- 87) Initializing Mojarra 4.0.13 for context '/opi_lab3'
+[0m[0m19:19:05,556 INFO  [org.primefaces.webapp.PostConstructApplicationEventListener] (ServerService Thread Pool -- 87) Running on PrimeFaces 12.0.0
+[0m[0m19:19:05,572 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 87) WFLYUT0021: Registered web context: '/opi_lab3' for server 'default-server'
+[0m[0m19:19:05,604 INFO  [org.jboss.as.server] (ServerService Thread Pool -- 46) WFLYSRV0010: Deployed "opi_lab3.war" (runtime-name : "opi_lab3.war")
+[0m[0m19:19:05,604 INFO  [org.jboss.as.server] (ServerService Thread Pool -- 46) WFLYSRV0010: Deployed "postgresql-42.7.8.jar" (runtime-name : "postgresql-42.7.8.jar")
+[0m[0m19:19:05,634 INFO  [org.jboss.as.server] (Controller Boot Thread) WFLYSRV0212: Resuming server
+[0m[0m19:19:05,639 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0060: Http management interface listening on http://127.0.0.1:9990/management
+[0m[0m19:19:05,639 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0051: Admin console listening on http://127.0.0.1:9990
+[0m[0m19:19:05,641 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0025: WildFly 39.0.1.Final (WildFly Core 31.0.3.Final) started in 8141ms - Started 809 of 999 services (338 services are lazy, passive or on-demand) - Server configuration file in use: standalone.xml - Minimum feature stability level: community
+[0m[0m19:19:05,716 INFO  [org.jboss.as.repository] (ServerService Thread Pool -- 87) WFLYDR0001: Content added at location /home/maxkarn/Desktop/wildfly/wildfly-39.0.1.Final/standalone/data/content/05/76e83495a0c9f25a4f3d29bbe9c08e7805bd27/content
+[0m[0m19:19:05,725 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 8) WFLYUT0022: Unregistered web context: '/opi_lab3' from server 'default-server'
+[0m[0m19:19:05,742 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 56) WFLYJPA0011: Stopping Persistence Unit (phase 2 of 2) Service 'opi_lab3.war#Points'
+[0m[0m19:19:05,759 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 56) WFLYJPA0011: Stopping Persistence Unit (phase 1 of 2) Service 'opi_lab3.war#Points'
+[0m[0m19:19:05,768 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 56) Stopped hibernate cache container
+[0m[0m19:19:05,780 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-6) WFLYSRV0028: Stopped deployment opi_lab3.war (runtime-name: opi_lab3.war) in 60ms
+[0m[0m19:19:05,785 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-3) WFLYSRV0027: Starting deployment of "opi_lab3.war" (runtime-name: "opi_lab3.war")
+[0m[31m19:19:05,793 SEVERE [jakarta.faces] (default task-2) Unable to obtain InjectionProvider from init time FacesContext. Does this container implement the Mojarra Injection SPI?
+[0m[31m19:19:05,797 SEVERE [jakarta.faces] (default task-2) Application was not properly initialized at startup, could not find Factory: jakarta.faces.context.PartialViewContextFactory. Attempting to find backup.
+[0m[31m19:19:05,797 SEVERE [jakarta.faces] (default task-2) Application was not properly initialized at startup, could not find Factory: jakarta.faces.context.PartialViewContextFactory. Attempting to find backup.
+[0m[31m19:19:05,798 SEVERE [jakarta.faces] (default task-2) Application was not properly initialized at startup, could not find Factory: jakarta.faces.context.PartialViewContextFactory. Attempting to find backup.
+[0m[31m19:19:05,799 ERROR [io.undertow.request] (default task-2) UT005023: Exception handling request to /opi_lab3/: java.lang.IllegalStateException: Service is not installed
+	at org.jboss.msc@1.5.6.Final//org.jboss.msc.service.ServiceRegistrationImpl.getValue(ServiceRegistrationImpl.java:164)
+	at org.jboss.msc@1.5.6.Final//org.jboss.msc.service.ReadableValueImpl.get(ReadableValueImpl.java:40)
+	at org.wildfly.service@31.0.3.Final//org.wildfly.service.Dependency$AbstractDependency.get(Dependency.java:154)
+	at org.jboss.as.server@31.0.3.Final//org.jboss.as.server.deployment.DelegatingSupplier.get(DelegatingSupplier.java:30)
+	at org.jboss.as.ee@39.0.1.Final//org.jboss.as.ee.naming.InjectedEENamespaceContextSelector.getNamingStore(InjectedEENamespaceContextSelector.java:69)
+	at org.jboss.as.ee@39.0.1.Final//org.jboss.as.ee.naming.InjectedEENamespaceContextSelector.getContext(InjectedEENamespaceContextSelector.java:78)
+	at org.jboss.as.naming@39.0.1.Final//org.jboss.as.naming.InitialContext$DefaultInitialContext.findContext(InitialContext.java:172)
+	at org.jboss.as.naming@39.0.1.Final//org.jboss.as.naming.InitialContext$DefaultInitialContext.lookup(InitialContext.java:218)
+	at org.jboss.as.naming@39.0.1.Final//org.jboss.as.naming.NamingContext.lookup(NamingContext.java:176)
+	at org.jboss.as.naming@39.0.1.Final//org.jboss.as.naming.NamingContext.lookup(NamingContext.java:172)
+	at java.naming/javax.naming.InitialContext.lookup(InitialContext.java:409)
+	at java.naming/javax.naming.InitialContext.lookup(InitialContext.java:409)
+	at jakarta.faces.impl@4.0.13//com.sun.faces.util.Util.getCdiBeanManager(Util.java:1499)
+	at jakarta.faces.impl@4.0.13//com.sun.faces.context.FacesContextImpl.release(FacesContextImpl.java:517)
+	at jakarta.faces.impl@4.0.13//jakarta.faces.context.FacesContextWrapper.release(FacesContextWrapper.java:352)
+	at deployment.opi_lab3.war//org.primefaces.context.PrimeFacesContext.release(PrimeFacesContext.java:130)
+	at jakarta.faces.impl@4.0.13//jakarta.faces.webapp.FacesServlet.service(FacesServlet.java:452)
 	at io.undertow.servlet@2.3.23.Final//io.undertow.servlet.handlers.ServletHandler.handleRequest(ServletHandler.java:74)
 	at io.undertow.servlet@2.3.23.Final//io.undertow.servlet.handlers.security.ServletSecurityRoleHandler.handleRequest(ServletSecurityRoleHandler.java:62)
 	at io.undertow.servlet@2.3.23.Final//io.undertow.servlet.handlers.ServletChain$1.handleRequest(ServletChain.java:68)
@@ -157,7 +182,7 @@
 	at org.jboss.xnio@3.8.16.Final//org.xnio.XnioWorker$WorkerThreadFactory$1$1.run(XnioWorker.java:1282)
 	at java.base/java.lang.Thread.run(Thread.java:1583)
 
-[0m[31m18:18:32,353 ERROR [io.undertow.request] (default task-2) UT005071: Undertow request failed HttpServerExchange{ GET /opi_lab3/}: java.lang.IllegalStateException: UT015023: This Context has been already destroyed
+[0m[31m19:19:05,801 ERROR [io.undertow.request] (default task-2) UT005071: Undertow request failed HttpServerExchange{ GET /opi_lab3/}: java.lang.IllegalStateException: UT015023: This Context has been already destroyed
 	at io.undertow.servlet@2.3.23.Final//io.undertow.servlet.spec.ServletContextImpl.getDeploymentInfo(ServletContextImpl.java:209)
 	at io.undertow.servlet@2.3.23.Final//io.undertow.servlet.spec.ServletContextImpl.getContextPath(ServletContextImpl.java:215)
 	at io.undertow.servlet@2.3.23.Final//io.undertow.servlet.spec.HttpServletRequestImpl.getContextPath(HttpServletRequestImpl.java:310)
@@ -191,327 +216,159 @@
 	at org.jboss.xnio@3.8.16.Final//org.xnio.XnioWorker$WorkerThreadFactory$1$1.run(XnioWorker.java:1282)
 	at java.base/java.lang.Thread.run(Thread.java:1583)
 
-[0m[0m18:18:32,366 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 25) WFLYJPA0011: Stopping Persistence Unit (phase 2 of 2) Service 'opi_lab3.war#Points'
-[0m[0m18:18:32,373 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 25) WFLYJPA0011: Stopping Persistence Unit (phase 1 of 2) Service 'opi_lab3.war#Points'
-[0m[0m18:18:32,401 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 25) Stopped hibernate cache container
-[0m[0m18:18:32,435 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-9) WFLYSRV0028: Stopped deployment opi_lab3.war (runtime-name: opi_lab3.war) in 113ms
-[0m[0m18:18:32,445 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-4) WFLYSRV0027: Starting deployment of "opi_lab3.war" (runtime-name: "opi_lab3.war")
-[0m[0m18:18:34,749 INFO  [org.jboss.as.jpa] (MSC service thread 1-4) WFLYJPA0002: Read persistence.xml for Points
-[0m[0m18:18:34,854 INFO  [org.jipijapa] (MSC service thread 1-2) JIPIORMV6020260: Second level cache enabled for opi_lab3.war#Points
-[0m[0m18:18:34,937 INFO  [org.jboss.weld.deployer] (MSC service thread 1-9) WFLYWELD0003: Processing weld deployment opi_lab3.war
-[0m[0m18:18:34,945 INFO  [org.infinispan.CONTAINER] (ServerService Thread Pool -- 25) ISPN000556: Starting user marshaller 'org.wildfly.clustering.cache.infinispan.marshalling.UserMarshaller'
-[0m[0m18:18:35,070 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 25) Started hibernate cache container
-[0m[0m18:18:35,075 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 25) WFLYJPA0010: Starting Persistence Unit (phase 1 of 2) Service 'opi_lab3.war#Points'
-[0m[0m18:18:35,075 INFO  [org.hibernate.jpa.internal.util.LogHelper] (ServerService Thread Pool -- 25) HHH000204: Processing PersistenceUnitInfo [name: Points]
-[0m[33m18:18:35,104 WARN  [org.hibernate.dialect.Dialect] (ServerService Thread Pool -- 25) HHH000511: The 2.2.224 version for [org.hibernate.dialect.PostgreSQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 12.0.0. Check the community dialects project for available legacy versions.
-[0m[33m18:18:35,106 WARN  [org.hibernate.orm.deprecation] (ServerService Thread Pool -- 25) HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-[0m[0m18:18:35,107 INFO  [org.hibernate.orm.connections.pooling] (ServerService Thread Pool -- 25) HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'org.jboss.as.connector.subsystems.datasources.WildFlyDataSource@3d17ac5b']
+[0m[0m19:19:07,173 INFO  [org.jboss.as.jpa] (MSC service thread 1-4) WFLYJPA0002: Read persistence.xml for Points
+[0m[0m19:19:07,230 INFO  [org.jipijapa] (MSC service thread 1-8) JIPIORMV6020260: Second level cache enabled for opi_lab3.war#Points
+[0m[0m19:19:07,262 INFO  [org.jboss.weld.deployer] (MSC service thread 1-9) WFLYWELD0003: Processing weld deployment opi_lab3.war
+[0m[0m19:19:07,269 INFO  [org.infinispan.CONTAINER] (ServerService Thread Pool -- 56) ISPN000556: Starting user marshaller 'org.wildfly.clustering.cache.infinispan.marshalling.UserMarshaller'
+[0m[0m19:19:07,328 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 56) Started hibernate cache container
+[0m[0m19:19:07,329 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 56) WFLYJPA0010: Starting Persistence Unit (phase 1 of 2) Service 'opi_lab3.war#Points'
+[0m[0m19:19:07,330 INFO  [org.hibernate.jpa.internal.util.LogHelper] (ServerService Thread Pool -- 56) HHH000204: Processing PersistenceUnitInfo [name: Points]
+[0m[33m19:19:07,343 WARN  [org.hibernate.dialect.Dialect] (ServerService Thread Pool -- 56) HHH000511: The 2.2.224 version for [org.hibernate.dialect.PostgreSQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 12.0.0. Check the community dialects project for available legacy versions.
+[0m[33m19:19:07,344 WARN  [org.hibernate.orm.deprecation] (ServerService Thread Pool -- 56) HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+[0m[0m19:19:07,344 INFO  [org.hibernate.orm.connections.pooling] (ServerService Thread Pool -- 56) HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'org.jboss.as.connector.subsystems.datasources.WildFlyDataSource@45b4e827']
 	Database driver: undefined/unknown
 	Database version: 2.2.224
 	Autocommit mode: undefined/unknown
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-[0m[0m18:18:35,107 INFO  [org.hibernate.cache.internal.RegionFactoryInitiator] (ServerService Thread Pool -- 25) HHH000025: Second-level cache region factory [org.infinispan.hibernate.cache.v6.InfinispanRegionFactory]
-[0m[0m18:18:35,116 INFO  [org.hibernate.envers.boot.internal.EnversServiceImpl] (ServerService Thread Pool -- 25) Envers integration enabled? : true
-[0m[0m18:18:35,191 INFO  [org.jipijapa] (MSC service thread 1-5) JIPIORMV6020260: Second level cache enabled for opi_lab3.war#Points
-[0m[0m18:18:35,497 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 25) WFLYJPA0010: Starting Persistence Unit (phase 2 of 2) Service 'opi_lab3.war#Points'
-[0m[0m18:18:35,935 INFO  [jakarta.enterprise.resource.webcontainer.faces.config] (ServerService Thread Pool -- 25) Initializing Mojarra 4.0.13 for context '/opi_lab3'
-[0m[0m18:18:36,683 INFO  [org.primefaces.webapp.PostConstructApplicationEventListener] (ServerService Thread Pool -- 25) Running on PrimeFaces 12.0.0
-[0m[0m18:18:36,687 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 25) WFLYUT0021: Registered web context: '/opi_lab3' for server 'default-server'
-[0m[0m18:18:36,755 INFO  [org.jboss.as.server] (ServerService Thread Pool -- 87) WFLYSRV0016: Replaced deployment "opi_lab3.war" with deployment "opi_lab3.war"
-[0m[33m18:18:37,011 WARN  [org.jboss.weld.Servlet] (default task-2) WELD-000714: HttpContextLifecycle guard leak detected. The Servlet container is not fully compliant. The value was 1
-[0m[0m18:18:43,788 INFO  [stdout] (default task-6) Hibernate: 
-[0m[0m18:18:43,789 INFO  [stdout] (default task-6)     select
-[0m[0m18:18:43,789 INFO  [stdout] (default task-6)         pe1_0.id,
-[0m[0m18:18:43,789 INFO  [stdout] (default task-6)         pe1_0.created_at,
-[0m[0m18:18:43,789 INFO  [stdout] (default task-6)         pe1_0.hit,
-[0m[0m18:18:43,789 INFO  [stdout] (default task-6)         pe1_0.r,
-[0m[0m18:18:43,789 INFO  [stdout] (default task-6)         pe1_0.temperature,
-[0m[0m18:18:43,790 INFO  [stdout] (default task-6)         pe1_0.x,
-[0m[0m18:18:43,790 INFO  [stdout] (default task-6)         pe1_0.y 
-[0m[0m18:18:43,790 INFO  [stdout] (default task-6)     from
-[0m[0m18:18:43,790 INFO  [stdout] (default task-6)         points pe1_0 
-[0m[0m18:18:43,790 INFO  [stdout] (default task-6)     order by
-[0m[0m18:18:43,790 INFO  [stdout] (default task-6)         pe1_0.created_at desc
-[0m[0m18:18:46,644 INFO  [stdout] (default task-6) Hibernate: 
-[0m[0m18:18:46,644 INFO  [stdout] (default task-6)     insert 
-[0m[0m18:18:46,644 INFO  [stdout] (default task-6)     into
-[0m[0m18:18:46,644 INFO  [stdout] (default task-6)         points
-[0m[0m18:18:46,645 INFO  [stdout] (default task-6)         (created_at, hit, r, temperature, x, y) 
-[0m[0m18:18:46,645 INFO  [stdout] (default task-6)     values
-[0m[0m18:18:46,645 INFO  [stdout] (default task-6)         (?, ?, ?, ?, ?, ?)
-[0m[0m18:18:46,925 INFO  [stdout] (default task-6) Hibernate: 
-[0m[0m18:18:46,926 INFO  [stdout] (default task-6)     insert 
-[0m[0m18:18:46,926 INFO  [stdout] (default task-6)     into
-[0m[0m18:18:46,926 INFO  [stdout] (default task-6)         points
-[0m[0m18:18:46,926 INFO  [stdout] (default task-6)         (created_at, hit, r, temperature, x, y) 
-[0m[0m18:18:46,926 INFO  [stdout] (default task-6)     values
-[0m[0m18:18:46,926 INFO  [stdout] (default task-6)         (?, ?, ?, ?, ?, ?)
-[0m[0m18:18:47,301 INFO  [stdout] (default task-6) Hibernate: 
-[0m[0m18:18:47,302 INFO  [stdout] (default task-6)     insert 
-[0m[0m18:18:47,302 INFO  [stdout] (default task-6)     into
-[0m[0m18:18:47,302 INFO  [stdout] (default task-6)         points
-[0m[0m18:18:47,302 INFO  [stdout] (default task-6)         (created_at, hit, r, temperature, x, y) 
-[0m[0m18:18:47,302 INFO  [stdout] (default task-6)     values
-[0m[0m18:18:47,302 INFO  [stdout] (default task-6)         (?, ?, ?, ?, ?, ?)
-[0m[0m18:18:47,914 INFO  [stdout] (default task-6) Hibernate: 
-[0m[0m18:18:47,915 INFO  [stdout] (default task-6)     insert 
-[0m[0m18:18:47,915 INFO  [stdout] (default task-6)     into
-[0m[0m18:18:47,915 INFO  [stdout] (default task-6)         points
-[0m[0m18:18:47,915 INFO  [stdout] (default task-6)         (created_at, hit, r, temperature, x, y) 
-[0m[0m18:18:47,915 INFO  [stdout] (default task-6)     values
-[0m[0m18:18:47,915 INFO  [stdout] (default task-6)         (?, ?, ?, ?, ?, ?)
-[0m[0m18:18:48,469 INFO  [stdout] (default task-6) Hibernate: 
-[0m[0m18:18:48,470 INFO  [stdout] (default task-6)     insert 
-[0m[0m18:18:48,470 INFO  [stdout] (default task-6)     into
-[0m[0m18:18:48,470 INFO  [stdout] (default task-6)         points
-[0m[0m18:18:48,470 INFO  [stdout] (default task-6)         (created_at, hit, r, temperature, x, y) 
-[0m[0m18:18:48,470 INFO  [stdout] (default task-6)     values
-[0m[0m18:18:48,470 INFO  [stdout] (default task-6)         (?, ?, ?, ?, ?, ?)
-[0m[0m18:19:00,670 INFO  [stdout] (default task-6) Hibernate: 
-[0m[0m18:19:00,670 INFO  [stdout] (default task-6)     insert 
-[0m[0m18:19:00,670 INFO  [stdout] (default task-6)     into
-[0m[0m18:19:00,670 INFO  [stdout] (default task-6)         points
-[0m[0m18:19:00,671 INFO  [stdout] (default task-6)         (created_at, hit, r, temperature, x, y) 
-[0m[0m18:19:00,671 INFO  [stdout] (default task-6)     values
-[0m[0m18:19:00,671 INFO  [stdout] (default task-6)         (?, ?, ?, ?, ?, ?)
-[0m[0m18:19:00,677 INFO  [stdout] (default task-6) Hibernate: 
-[0m[0m18:19:00,678 INFO  [stdout] (default task-6)     insert 
-[0m[0m18:19:00,678 INFO  [stdout] (default task-6)     into
-[0m[0m18:19:00,678 INFO  [stdout] (default task-6)         points
-[0m[0m18:19:00,678 INFO  [stdout] (default task-6)         (created_at, hit, r, temperature, x, y) 
-[0m[0m18:19:00,679 INFO  [stdout] (default task-6)     values
-[0m[0m18:19:00,679 INFO  [stdout] (default task-6)         (?, ?, ?, ?, ?, ?)
-[0m[0m18:19:01,566 INFO  [stdout] (default task-6) Hibernate: 
-[0m[0m18:19:01,566 INFO  [stdout] (default task-6)     insert 
-[0m[0m18:19:01,566 INFO  [stdout] (default task-6)     into
-[0m[0m18:19:01,567 INFO  [stdout] (default task-6)         points
-[0m[0m18:19:01,567 INFO  [stdout] (default task-6)         (created_at, hit, r, temperature, x, y) 
-[0m[0m18:19:01,567 INFO  [stdout] (default task-6)     values
-[0m[0m18:19:01,567 INFO  [stdout] (default task-6)         (?, ?, ?, ?, ?, ?)
-[0m[0m18:19:01,572 INFO  [stdout] (default task-6) Hibernate: 
-[0m[0m18:19:01,572 INFO  [stdout] (default task-6)     insert 
-[0m[0m18:19:01,572 INFO  [stdout] (default task-6)     into
-[0m[0m18:19:01,572 INFO  [stdout] (default task-6)         points
-[0m[0m18:19:01,572 INFO  [stdout] (default task-6)         (created_at, hit, r, temperature, x, y) 
-[0m[0m18:19:01,572 INFO  [stdout] (default task-6)     values
-[0m[0m18:19:01,572 INFO  [stdout] (default task-6)         (?, ?, ?, ?, ?, ?)
-[0m[0m18:19:02,114 INFO  [stdout] (default task-6) Hibernate: 
-[0m[0m18:19:02,114 INFO  [stdout] (default task-6)     insert 
-[0m[0m18:19:02,114 INFO  [stdout] (default task-6)     into
-[0m[0m18:19:02,114 INFO  [stdout] (default task-6)         points
-[0m[0m18:19:02,114 INFO  [stdout] (default task-6)         (created_at, hit, r, temperature, x, y) 
-[0m[0m18:19:02,114 INFO  [stdout] (default task-6)     values
-[0m[0m18:19:02,114 INFO  [stdout] (default task-6)         (?, ?, ?, ?, ?, ?)
-[0m[0m18:19:02,120 INFO  [stdout] (default task-6) Hibernate: 
-[0m[0m18:19:02,120 INFO  [stdout] (default task-6)     insert 
-[0m[0m18:19:02,121 INFO  [stdout] (default task-6)     into
-[0m[0m18:19:02,121 INFO  [stdout] (default task-6)         points
-[0m[0m18:19:02,121 INFO  [stdout] (default task-6)         (created_at, hit, r, temperature, x, y) 
-[0m[0m18:19:02,121 INFO  [stdout] (default task-6)     values
-[0m[0m18:19:02,121 INFO  [stdout] (default task-6)         (?, ?, ?, ?, ?, ?)
-[0m[0m18:19:02,624 INFO  [stdout] (default task-6) Hibernate: 
-[0m[0m18:19:02,624 INFO  [stdout] (default task-6)     insert 
-[0m[0m18:19:02,626 INFO  [stdout] (default task-6)     into
-[0m[0m18:19:02,626 INFO  [stdout] (default task-6)         points
-[0m[0m18:19:02,626 INFO  [stdout] (default task-6)         (created_at, hit, r, temperature, x, y) 
-[0m[0m18:19:02,626 INFO  [stdout] (default task-6)     values
-[0m[0m18:19:02,626 INFO  [stdout] (default task-6)         (?, ?, ?, ?, ?, ?)
-[0m[0m18:19:02,632 INFO  [stdout] (default task-6) Hibernate: 
-[0m[0m18:19:02,632 INFO  [stdout] (default task-6)     insert 
-[0m[0m18:19:02,632 INFO  [stdout] (default task-6)     into
-[0m[0m18:19:02,632 INFO  [stdout] (default task-6)         points
-[0m[0m18:19:02,632 INFO  [stdout] (default task-6)         (created_at, hit, r, temperature, x, y) 
-[0m[0m18:19:02,632 INFO  [stdout] (default task-6)     values
-[0m[0m18:19:02,632 INFO  [stdout] (default task-6)         (?, ?, ?, ?, ?, ?)
-[0m[0m18:19:02,831 INFO  [stdout] (default task-6) Hibernate: 
-[0m[0m18:19:02,832 INFO  [stdout] (default task-6)     insert 
-[0m[0m18:19:02,832 INFO  [stdout] (default task-6)     into
-[0m[0m18:19:02,832 INFO  [stdout] (default task-6)         points
-[0m[0m18:19:02,832 INFO  [stdout] (default task-6)         (created_at, hit, r, temperature, x, y) 
-[0m[0m18:19:02,832 INFO  [stdout] (default task-6)     values
-[0m[0m18:19:02,832 INFO  [stdout] (default task-6)         (?, ?, ?, ?, ?, ?)
-[0m[0m18:19:02,836 INFO  [stdout] (default task-6) Hibernate: 
-[0m[0m18:19:02,837 INFO  [stdout] (default task-6)     insert 
-[0m[0m18:19:02,837 INFO  [stdout] (default task-6)     into
-[0m[0m18:19:02,837 INFO  [stdout] (default task-6)         points
-[0m[0m18:19:02,837 INFO  [stdout] (default task-6)         (created_at, hit, r, temperature, x, y) 
-[0m[0m18:19:02,837 INFO  [stdout] (default task-6)     values
-[0m[0m18:19:02,837 INFO  [stdout] (default task-6)         (?, ?, ?, ?, ?, ?)
-[0m[0m18:19:03,431 INFO  [stdout] (default task-6) Hibernate: 
-[0m[0m18:19:03,432 INFO  [stdout] (default task-6)     insert 
-[0m[0m18:19:03,432 INFO  [stdout] (default task-6)     into
-[0m[0m18:19:03,432 INFO  [stdout] (default task-6)         points
-[0m[0m18:19:03,432 INFO  [stdout] (default task-6)         (created_at, hit, r, temperature, x, y) 
-[0m[0m18:19:03,432 INFO  [stdout] (default task-6)     values
-[0m[0m18:19:03,432 INFO  [stdout] (default task-6)         (?, ?, ?, ?, ?, ?)
-[0m[0m18:19:03,438 INFO  [stdout] (default task-6) Hibernate: 
-[0m[0m18:19:03,439 INFO  [stdout] (default task-6)     insert 
-[0m[0m18:19:03,439 INFO  [stdout] (default task-6)     into
-[0m[0m18:19:03,439 INFO  [stdout] (default task-6)         points
-[0m[0m18:19:03,439 INFO  [stdout] (default task-6)         (created_at, hit, r, temperature, x, y) 
-[0m[0m18:19:03,439 INFO  [stdout] (default task-6)     values
-[0m[0m18:19:03,439 INFO  [stdout] (default task-6)         (?, ?, ?, ?, ?, ?)
-[0m[0m18:19:03,741 INFO  [stdout] (default task-6) Hibernate: 
-[0m[0m18:19:03,742 INFO  [stdout] (default task-6)     insert 
-[0m[0m18:19:03,742 INFO  [stdout] (default task-6)     into
-[0m[0m18:19:03,742 INFO  [stdout] (default task-6)         points
-[0m[0m18:19:03,742 INFO  [stdout] (default task-6)         (created_at, hit, r, temperature, x, y) 
-[0m[0m18:19:03,742 INFO  [stdout] (default task-6)     values
-[0m[0m18:19:03,742 INFO  [stdout] (default task-6)         (?, ?, ?, ?, ?, ?)
-[0m[0m18:19:03,747 INFO  [stdout] (default task-6) Hibernate: 
-[0m[0m18:19:03,747 INFO  [stdout] (default task-6)     insert 
-[0m[0m18:19:03,747 INFO  [stdout] (default task-6)     into
-[0m[0m18:19:03,747 INFO  [stdout] (default task-6)         points
-[0m[0m18:19:03,747 INFO  [stdout] (default task-6)         (created_at, hit, r, temperature, x, y) 
-[0m[0m18:19:03,747 INFO  [stdout] (default task-6)     values
-[0m[0m18:19:03,747 INFO  [stdout] (default task-6)         (?, ?, ?, ?, ?, ?)
-[0m[0m18:19:04,090 INFO  [stdout] (default task-6) Hibernate: 
-[0m[0m18:19:04,091 INFO  [stdout] (default task-6)     insert 
-[0m[0m18:19:04,091 INFO  [stdout] (default task-6)     into
-[0m[0m18:19:04,091 INFO  [stdout] (default task-6)         points
-[0m[0m18:19:04,091 INFO  [stdout] (default task-6)         (created_at, hit, r, temperature, x, y) 
-[0m[0m18:19:04,091 INFO  [stdout] (default task-6)     values
-[0m[0m18:19:04,091 INFO  [stdout] (default task-6)         (?, ?, ?, ?, ?, ?)
-[0m[0m18:19:04,097 INFO  [stdout] (default task-6) Hibernate: 
-[0m[0m18:19:04,097 INFO  [stdout] (default task-6)     insert 
-[0m[0m18:19:04,097 INFO  [stdout] (default task-6)     into
-[0m[0m18:19:04,097 INFO  [stdout] (default task-6)         points
-[0m[0m18:19:04,097 INFO  [stdout] (default task-6)         (created_at, hit, r, temperature, x, y) 
-[0m[0m18:19:04,097 INFO  [stdout] (default task-6)     values
-[0m[0m18:19:04,097 INFO  [stdout] (default task-6)         (?, ?, ?, ?, ?, ?)
-[0m[0m18:19:04,589 INFO  [stdout] (default task-6) Hibernate: 
-[0m[0m18:19:04,590 INFO  [stdout] (default task-6)     insert 
-[0m[0m18:19:04,590 INFO  [stdout] (default task-6)     into
-[0m[0m18:19:04,590 INFO  [stdout] (default task-6)         points
-[0m[0m18:19:04,590 INFO  [stdout] (default task-6)         (created_at, hit, r, temperature, x, y) 
-[0m[0m18:19:04,590 INFO  [stdout] (default task-6)     values
-[0m[0m18:19:04,590 INFO  [stdout] (default task-6)         (?, ?, ?, ?, ?, ?)
-[0m[0m18:19:04,594 INFO  [stdout] (default task-6) Hibernate: 
-[0m[0m18:19:04,594 INFO  [stdout] (default task-6)     insert 
-[0m[0m18:19:04,594 INFO  [stdout] (default task-6)     into
-[0m[0m18:19:04,594 INFO  [stdout] (default task-6)         points
-[0m[0m18:19:04,594 INFO  [stdout] (default task-6)         (created_at, hit, r, temperature, x, y) 
-[0m[0m18:19:04,594 INFO  [stdout] (default task-6)     values
-[0m[0m18:19:04,594 INFO  [stdout] (default task-6)         (?, ?, ?, ?, ?, ?)
-[0m[0m18:19:05,138 INFO  [stdout] (default task-6) Hibernate: 
-[0m[0m18:19:05,138 INFO  [stdout] (default task-6)     insert 
-[0m[0m18:19:05,138 INFO  [stdout] (default task-6)     into
-[0m[0m18:19:05,138 INFO  [stdout] (default task-6)         points
-[0m[0m18:19:05,138 INFO  [stdout] (default task-6)         (created_at, hit, r, temperature, x, y) 
-[0m[0m18:19:05,138 INFO  [stdout] (default task-6)     values
-[0m[0m18:19:05,138 INFO  [stdout] (default task-6)         (?, ?, ?, ?, ?, ?)
-[0m[0m18:19:05,145 INFO  [stdout] (default task-6) Hibernate: 
-[0m[0m18:19:05,146 INFO  [stdout] (default task-6)     insert 
-[0m[0m18:19:05,146 INFO  [stdout] (default task-6)     into
-[0m[0m18:19:05,146 INFO  [stdout] (default task-6)         points
-[0m[0m18:19:05,146 INFO  [stdout] (default task-6)         (created_at, hit, r, temperature, x, y) 
-[0m[0m18:19:05,146 INFO  [stdout] (default task-6)     values
-[0m[0m18:19:05,146 INFO  [stdout] (default task-6)         (?, ?, ?, ?, ?, ?)
-[0m[0m18:19:05,643 INFO  [stdout] (default task-6) Hibernate: 
-[0m[0m18:19:05,643 INFO  [stdout] (default task-6)     insert 
-[0m[0m18:19:05,643 INFO  [stdout] (default task-6)     into
-[0m[0m18:19:05,643 INFO  [stdout] (default task-6)         points
-[0m[0m18:19:05,643 INFO  [stdout] (default task-6)         (created_at, hit, r, temperature, x, y) 
-[0m[0m18:19:05,643 INFO  [stdout] (default task-6)     values
-[0m[0m18:19:05,643 INFO  [stdout] (default task-6)         (?, ?, ?, ?, ?, ?)
-[0m[0m18:19:05,648 INFO  [stdout] (default task-6) Hibernate: 
-[0m[0m18:19:05,649 INFO  [stdout] (default task-6)     insert 
-[0m[0m18:19:05,649 INFO  [stdout] (default task-6)     into
-[0m[0m18:19:05,649 INFO  [stdout] (default task-6)         points
-[0m[0m18:19:05,649 INFO  [stdout] (default task-6)         (created_at, hit, r, temperature, x, y) 
-[0m[0m18:19:05,649 INFO  [stdout] (default task-6)     values
-[0m[0m18:19:05,649 INFO  [stdout] (default task-6)         (?, ?, ?, ?, ?, ?)
-[0m[0m18:20:58,780 INFO  [stdout] (default task-6) Hibernate: 
-[0m[0m18:20:58,780 INFO  [stdout] (default task-6)     insert 
-[0m[0m18:20:58,780 INFO  [stdout] (default task-6)     into
-[0m[0m18:20:58,780 INFO  [stdout] (default task-6)         points
-[0m[0m18:20:58,780 INFO  [stdout] (default task-6)         (created_at, hit, r, temperature, x, y) 
-[0m[0m18:20:58,780 INFO  [stdout] (default task-6)     values
-[0m[0m18:20:58,780 INFO  [stdout] (default task-6)         (?, ?, ?, ?, ?, ?)
-[0m[0m18:20:59,241 INFO  [stdout] (default task-6) Hibernate: 
-[0m[0m18:20:59,241 INFO  [stdout] (default task-6)     insert 
-[0m[0m18:20:59,241 INFO  [stdout] (default task-6)     into
-[0m[0m18:20:59,241 INFO  [stdout] (default task-6)         points
-[0m[0m18:20:59,241 INFO  [stdout] (default task-6)         (created_at, hit, r, temperature, x, y) 
-[0m[0m18:20:59,241 INFO  [stdout] (default task-6)     values
-[0m[0m18:20:59,241 INFO  [stdout] (default task-6)         (?, ?, ?, ?, ?, ?)
-[0m[0m18:20:59,945 INFO  [stdout] (default task-6) Hibernate: 
-[0m[0m18:20:59,945 INFO  [stdout] (default task-6)     insert 
-[0m[0m18:20:59,945 INFO  [stdout] (default task-6)     into
-[0m[0m18:20:59,945 INFO  [stdout] (default task-6)         points
-[0m[0m18:20:59,945 INFO  [stdout] (default task-6)         (created_at, hit, r, temperature, x, y) 
-[0m[0m18:20:59,945 INFO  [stdout] (default task-6)     values
-[0m[0m18:20:59,945 INFO  [stdout] (default task-6)         (?, ?, ?, ?, ?, ?)
-[0m[0m18:21:00,587 INFO  [stdout] (default task-6) Hibernate: 
-[0m[0m18:21:00,587 INFO  [stdout] (default task-6)     insert 
-[0m[0m18:21:00,587 INFO  [stdout] (default task-6)     into
-[0m[0m18:21:00,588 INFO  [stdout] (default task-6)         points
-[0m[0m18:21:00,588 INFO  [stdout] (default task-6)         (created_at, hit, r, temperature, x, y) 
-[0m[0m18:21:00,588 INFO  [stdout] (default task-6)     values
-[0m[0m18:21:00,588 INFO  [stdout] (default task-6)         (?, ?, ?, ?, ?, ?)
-[0m[0m18:21:13,245 INFO  [stdout] (default task-6) Hibernate: 
-[0m[0m18:21:13,245 INFO  [stdout] (default task-6)     insert 
-[0m[0m18:21:13,246 INFO  [stdout] (default task-6)     into
-[0m[0m18:21:13,246 INFO  [stdout] (default task-6)         points
-[0m[0m18:21:13,246 INFO  [stdout] (default task-6)         (created_at, hit, r, temperature, x, y) 
-[0m[0m18:21:13,246 INFO  [stdout] (default task-6)     values
-[0m[0m18:21:13,246 INFO  [stdout] (default task-6)         (?, ?, ?, ?, ?, ?)
-[0m[0m18:21:13,251 INFO  [stdout] (default task-6) Hibernate: 
-[0m[0m18:21:13,251 INFO  [stdout] (default task-6)     insert 
-[0m[0m18:21:13,251 INFO  [stdout] (default task-6)     into
-[0m[0m18:21:13,251 INFO  [stdout] (default task-6)         points
-[0m[0m18:21:13,251 INFO  [stdout] (default task-6)         (created_at, hit, r, temperature, x, y) 
-[0m[0m18:21:13,251 INFO  [stdout] (default task-6)     values
-[0m[0m18:21:13,251 INFO  [stdout] (default task-6)         (?, ?, ?, ?, ?, ?)
-[0m[0m18:21:13,256 INFO  [stdout] (default task-6) Hibernate: 
-[0m[0m18:21:13,256 INFO  [stdout] (default task-6)     insert 
-[0m[0m18:21:13,256 INFO  [stdout] (default task-6)     into
-[0m[0m18:21:13,256 INFO  [stdout] (default task-6)         points
-[0m[0m18:21:13,256 INFO  [stdout] (default task-6)         (created_at, hit, r, temperature, x, y) 
-[0m[0m18:21:13,256 INFO  [stdout] (default task-6)     values
-[0m[0m18:21:13,256 INFO  [stdout] (default task-6)         (?, ?, ?, ?, ?, ?)
-[0m[0m19:38:24,629 INFO  [stdout] (default task-6) Hibernate: 
-[0m[0m19:38:24,631 INFO  [stdout] (default task-6)     insert 
-[0m[0m19:38:24,631 INFO  [stdout] (default task-6)     into
-[0m[0m19:38:24,631 INFO  [stdout] (default task-6)         points
-[0m[0m19:38:24,631 INFO  [stdout] (default task-6)         (created_at, hit, r, temperature, x, y) 
-[0m[0m19:38:24,632 INFO  [stdout] (default task-6)     values
-[0m[0m19:38:24,632 INFO  [stdout] (default task-6)         (?, ?, ?, ?, ?, ?)
-[0m[0m19:38:25,039 INFO  [stdout] (default task-6) Hibernate: 
-[0m[0m19:38:25,039 INFO  [stdout] (default task-6)     insert 
-[0m[0m19:38:25,039 INFO  [stdout] (default task-6)     into
-[0m[0m19:38:25,039 INFO  [stdout] (default task-6)         points
-[0m[0m19:38:25,039 INFO  [stdout] (default task-6)         (created_at, hit, r, temperature, x, y) 
-[0m[0m19:38:25,039 INFO  [stdout] (default task-6)     values
-[0m[0m19:38:25,039 INFO  [stdout] (default task-6)         (?, ?, ?, ?, ?, ?)
-[0m[0m19:38:29,712 INFO  [stdout] (default task-6) Hibernate: 
-[0m[0m19:38:29,713 INFO  [stdout] (default task-6)     insert 
-[0m[0m19:38:29,713 INFO  [stdout] (default task-6)     into
-[0m[0m19:38:29,713 INFO  [stdout] (default task-6)         points
-[0m[0m19:38:29,713 INFO  [stdout] (default task-6)         (created_at, hit, r, temperature, x, y) 
-[0m[0m19:38:29,713 INFO  [stdout] (default task-6)     values
-[0m[0m19:38:29,713 INFO  [stdout] (default task-6)         (?, ?, ?, ?, ?, ?)
-[0m[0m19:38:54,589 INFO  [org.jboss.as.server] (Thread-1) WFLYSRV0272: Suspending server
-[0m[0m19:38:54,595 INFO  [org.jboss.as.ejb3] (Thread-1) WFLYEJB0493: Jakarta Enterprise Beans subsystem suspension complete
-[0m[0m19:38:54,598 INFO  [org.jboss.as.server] (Thread-1) WFLYSRV0220: Server shutdown has been requested via an OS signal
-[0m[0m19:38:54,604 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-9) WFLYJCA0019: Stopped Driver service with driver-name = postgresql-42.7.8.jar
-[0m[0m19:38:54,614 INFO  [org.jboss.as.mail.extension] (MSC service thread 1-6) WFLYMAIL0002: Unbound mail session [java:jboss/mail/Default]
-[0m[0m19:38:54,614 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 99) WFLYUT0022: Unregistered web context: '/opi_lab3' from server 'default-server'
-[0m[0m19:38:54,631 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-4) WFLYUT0019: Host default-host stopping
-[0m[0m19:38:54,639 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-2) WFLYSRV0028: Stopped deployment postgresql-42.7.8.jar (runtime-name: postgresql-42.7.8.jar) in 37ms
-[0m[0m19:38:54,645 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 108) WFLYJPA0011: Stopping Persistence Unit (phase 2 of 2) Service 'opi_lab3.war#Points'
-[0m[0m19:38:54,648 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 108) WFLYJPA0011: Stopping Persistence Unit (phase 1 of 2) Service 'opi_lab3.war#Points'
-[0m[0m19:38:54,649 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-3) WFLYJCA0010: Unbound data source [java:jboss/datasources/ExampleDS]
-[0m[0m19:38:54,653 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-8) WFLYJCA0019: Stopped Driver service with driver-name = h2
-[0m[0m19:38:54,655 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-6) WFLYUT0008: Undertow HTTP listener default suspending
-[0m[0m19:38:54,655 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-3) WFLYUT0008: Undertow HTTPS listener https suspending
-[0m[0m19:38:54,655 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 106) Stopped hibernate cache container
-[0m[0m19:38:54,656 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-6) WFLYUT0007: Undertow HTTP listener default stopped, was bound to 127.0.0.1:8080
-[0m[0m19:38:54,656 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-3) WFLYUT0007: Undertow HTTPS listener https stopped, was bound to 127.0.0.1:8443
-[0m[0m19:38:54,658 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-3) WFLYUT0004: Undertow 2.3.23.Final stopping
-[0m[0m19:38:54,682 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-3) WFLYSRV0028: Stopped deployment opi_lab3.war (runtime-name: opi_lab3.war) in 81ms
-[0m[0m19:38:54,689 INFO  [org.jboss.as] (MSC service thread 1-2) WFLYSRV0050: WildFly 39.0.1.Final (WildFly Core 31.0.3.Final) stopped in 88ms
+[0m[0m19:19:07,345 INFO  [org.hibernate.cache.internal.RegionFactoryInitiator] (ServerService Thread Pool -- 56) HHH000025: Second-level cache region factory [org.infinispan.hibernate.cache.v6.InfinispanRegionFactory]
+[0m[0m19:19:07,348 INFO  [org.hibernate.envers.boot.internal.EnversServiceImpl] (ServerService Thread Pool -- 56) Envers integration enabled? : true
+[0m[0m19:19:07,360 INFO  [org.jipijapa] (MSC service thread 1-9) JIPIORMV6020260: Second level cache enabled for opi_lab3.war#Points
+[0m[0m19:19:07,486 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 56) WFLYJPA0010: Starting Persistence Unit (phase 2 of 2) Service 'opi_lab3.war#Points'
+[0m[0m19:19:07,685 INFO  [stdout] (ServerService Thread Pool -- 56) PointsStatisticsManager: MBean зарегистрирован как org.example:type=PointsStatistics
+[0m[0m19:19:07,687 INFO  [jakarta.enterprise.resource.webcontainer.faces.config] (ServerService Thread Pool -- 56) Initializing Mojarra 4.0.13 for context '/opi_lab3'
+[0m[0m19:19:08,015 INFO  [org.primefaces.webapp.PostConstructApplicationEventListener] (ServerService Thread Pool -- 56) Running on PrimeFaces 12.0.0
+[0m[0m19:19:08,017 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 56) WFLYUT0021: Registered web context: '/opi_lab3' for server 'default-server'
+[0m[0m19:19:08,071 INFO  [org.jboss.as.server] (ServerService Thread Pool -- 87) WFLYSRV0016: Replaced deployment "opi_lab3.war" with deployment "opi_lab3.war"
+[0m[0m19:19:08,073 INFO  [org.jboss.as.repository] (ServerService Thread Pool -- 87) WFLYDR0002: Content removed from location /home/maxkarn/Desktop/wildfly/wildfly-39.0.1.Final/standalone/data/content/49/d88222674e2cdc915a5149b9095435a4b18c7c/content
+[0m[33m19:19:08,147 WARN  [org.jboss.weld.Servlet] (default task-2) WELD-000714: HttpContextLifecycle guard leak detected. The Servlet container is not fully compliant. The value was 1
+[0m[0m19:19:10,915 INFO  [stdout] (default task-3) Hibernate: 
+[0m[0m19:19:10,915 INFO  [stdout] (default task-3)     select
+[0m[0m19:19:10,915 INFO  [stdout] (default task-3)         pe1_0.id,
+[0m[0m19:19:10,915 INFO  [stdout] (default task-3)         pe1_0.created_at,
+[0m[0m19:19:10,915 INFO  [stdout] (default task-3)         pe1_0.hit,
+[0m[0m19:19:10,915 INFO  [stdout] (default task-3)         pe1_0.r,
+[0m[0m19:19:10,915 INFO  [stdout] (default task-3)         pe1_0.temperature,
+[0m[0m19:19:10,916 INFO  [stdout] (default task-3)         pe1_0.x,
+[0m[0m19:19:10,916 INFO  [stdout] (default task-3)         pe1_0.y 
+[0m[0m19:19:10,916 INFO  [stdout] (default task-3)     from
+[0m[0m19:19:10,916 INFO  [stdout] (default task-3)         points pe1_0 
+[0m[0m19:19:10,916 INFO  [stdout] (default task-3)     order by
+[0m[0m19:19:10,916 INFO  [stdout] (default task-3)         pe1_0.created_at desc
+[0m[0m19:19:19,939 INFO  [stdout] (default task-2) Hibernate: 
+[0m[0m19:19:19,939 INFO  [stdout] (default task-2)     insert 
+[0m[0m19:19:19,939 INFO  [stdout] (default task-2)     into
+[0m[0m19:19:19,939 INFO  [stdout] (default task-2)         points
+[0m[0m19:19:19,939 INFO  [stdout] (default task-2)         (created_at, hit, r, temperature, x, y) 
+[0m[0m19:19:19,939 INFO  [stdout] (default task-2)     values
+[0m[0m19:19:19,939 INFO  [stdout] (default task-2)         (?, ?, ?, ?, ?, ?)
+[0m[0m19:19:20,398 INFO  [stdout] (default task-2) Hibernate: 
+[0m[0m19:19:20,398 INFO  [stdout] (default task-2)     insert 
+[0m[0m19:19:20,398 INFO  [stdout] (default task-2)     into
+[0m[0m19:19:20,399 INFO  [stdout] (default task-2)         points
+[0m[0m19:19:20,399 INFO  [stdout] (default task-2)         (created_at, hit, r, temperature, x, y) 
+[0m[0m19:19:20,399 INFO  [stdout] (default task-2)     values
+[0m[0m19:19:20,399 INFO  [stdout] (default task-2)         (?, ?, ?, ?, ?, ?)
+[0m[0m19:19:20,981 INFO  [stdout] (default task-2) Hibernate: 
+[0m[0m19:19:20,982 INFO  [stdout] (default task-2)     insert 
+[0m[0m19:19:20,982 INFO  [stdout] (default task-2)     into
+[0m[0m19:19:20,982 INFO  [stdout] (default task-2)         points
+[0m[0m19:19:20,982 INFO  [stdout] (default task-2)         (created_at, hit, r, temperature, x, y) 
+[0m[0m19:19:20,982 INFO  [stdout] (default task-2)     values
+[0m[0m19:19:20,982 INFO  [stdout] (default task-2)         (?, ?, ?, ?, ?, ?)
+[0m[0m19:19:21,356 INFO  [stdout] (default task-2) Hibernate: 
+[0m[0m19:19:21,356 INFO  [stdout] (default task-2)     insert 
+[0m[0m19:19:21,356 INFO  [stdout] (default task-2)     into
+[0m[0m19:19:21,356 INFO  [stdout] (default task-2)         points
+[0m[0m19:19:21,357 INFO  [stdout] (default task-2)         (created_at, hit, r, temperature, x, y) 
+[0m[0m19:19:21,357 INFO  [stdout] (default task-2)     values
+[0m[0m19:19:21,357 INFO  [stdout] (default task-2)         (?, ?, ?, ?, ?, ?)
+[0m[0m19:19:22,179 INFO  [stdout] (default task-2) Hibernate: 
+[0m[0m19:19:22,179 INFO  [stdout] (default task-2)     insert 
+[0m[0m19:19:22,179 INFO  [stdout] (default task-2)     into
+[0m[0m19:19:22,179 INFO  [stdout] (default task-2)         points
+[0m[0m19:19:22,180 INFO  [stdout] (default task-2)         (created_at, hit, r, temperature, x, y) 
+[0m[0m19:19:22,180 INFO  [stdout] (default task-2)     values
+[0m[0m19:19:22,180 INFO  [stdout] (default task-2)         (?, ?, ?, ?, ?, ?)
+[0m[0m19:19:26,365 INFO  [stdout] (default task-2) Hibernate: 
+[0m[0m19:19:26,365 INFO  [stdout] (default task-2)     insert 
+[0m[0m19:19:26,365 INFO  [stdout] (default task-2)     into
+[0m[0m19:19:26,365 INFO  [stdout] (default task-2)         points
+[0m[0m19:19:26,365 INFO  [stdout] (default task-2)         (created_at, hit, r, temperature, x, y) 
+[0m[0m19:19:26,365 INFO  [stdout] (default task-2)     values
+[0m[0m19:19:26,366 INFO  [stdout] (default task-2)         (?, ?, ?, ?, ?, ?)
+[0m[0m19:19:26,718 INFO  [stdout] (default task-2) Hibernate: 
+[0m[0m19:19:26,719 INFO  [stdout] (default task-2)     insert 
+[0m[0m19:19:26,719 INFO  [stdout] (default task-2)     into
+[0m[0m19:19:26,719 INFO  [stdout] (default task-2)         points
+[0m[0m19:19:26,719 INFO  [stdout] (default task-2)         (created_at, hit, r, temperature, x, y) 
+[0m[0m19:19:26,719 INFO  [stdout] (default task-2)     values
+[0m[0m19:19:26,719 INFO  [stdout] (default task-2)         (?, ?, ?, ?, ?, ?)
+[0m[0m19:19:27,023 INFO  [stdout] (default task-2) Hibernate: 
+[0m[0m19:19:27,023 INFO  [stdout] (default task-2)     insert 
+[0m[0m19:19:27,023 INFO  [stdout] (default task-2)     into
+[0m[0m19:19:27,023 INFO  [stdout] (default task-2)         points
+[0m[0m19:19:27,024 INFO  [stdout] (default task-2)         (created_at, hit, r, temperature, x, y) 
+[0m[0m19:19:27,024 INFO  [stdout] (default task-2)     values
+[0m[0m19:19:27,024 INFO  [stdout] (default task-2)         (?, ?, ?, ?, ?, ?)
+[0m[0m19:19:27,507 INFO  [stdout] (default task-2) Hibernate: 
+[0m[0m19:19:27,507 INFO  [stdout] (default task-2)     insert 
+[0m[0m19:19:27,507 INFO  [stdout] (default task-2)     into
+[0m[0m19:19:27,508 INFO  [stdout] (default task-2)         points
+[0m[0m19:19:27,508 INFO  [stdout] (default task-2)         (created_at, hit, r, temperature, x, y) 
+[0m[0m19:19:27,508 INFO  [stdout] (default task-2)     values
+[0m[0m19:19:27,508 INFO  [stdout] (default task-2)         (?, ?, ?, ?, ?, ?)
+[0m[0m19:19:27,889 INFO  [stdout] (default task-2) Hibernate: 
+[0m[0m19:19:27,889 INFO  [stdout] (default task-2)     insert 
+[0m[0m19:19:27,889 INFO  [stdout] (default task-2)     into
+[0m[0m19:19:27,890 INFO  [stdout] (default task-2)         points
+[0m[0m19:19:27,890 INFO  [stdout] (default task-2)         (created_at, hit, r, temperature, x, y) 
+[0m[0m19:19:27,890 INFO  [stdout] (default task-2)     values
+[0m[0m19:19:27,890 INFO  [stdout] (default task-2)         (?, ?, ?, ?, ?, ?)
+[0m[0m19:19:28,331 INFO  [stdout] (default task-2) Hibernate: 
+[0m[0m19:19:28,331 INFO  [stdout] (default task-2)     insert 
+[0m[0m19:19:28,331 INFO  [stdout] (default task-2)     into
+[0m[0m19:19:28,331 INFO  [stdout] (default task-2)         points
+[0m[0m19:19:28,331 INFO  [stdout] (default task-2)         (created_at, hit, r, temperature, x, y) 
+[0m[0m19:19:28,331 INFO  [stdout] (default task-2)     values
+[0m[0m19:19:28,331 INFO  [stdout] (default task-2)         (?, ?, ?, ?, ?, ?)
+[0m[0m19:19:28,752 INFO  [stdout] (default task-2) Hibernate: 
+[0m[0m19:19:28,752 INFO  [stdout] (default task-2)     insert 
+[0m[0m19:19:28,752 INFO  [stdout] (default task-2)     into
+[0m[0m19:19:28,752 INFO  [stdout] (default task-2)         points
+[0m[0m19:19:28,752 INFO  [stdout] (default task-2)         (created_at, hit, r, temperature, x, y) 
+[0m[0m19:19:28,752 INFO  [stdout] (default task-2)     values
+[0m[0m19:19:28,753 INFO  [stdout] (default task-2)         (?, ?, ?, ?, ?, ?)
+[0m[0m19:19:30,165 INFO  [stdout] (default task-2) Hibernate: 
+[0m[0m19:19:30,165 INFO  [stdout] (default task-2)     insert 
+[0m[0m19:19:30,166 INFO  [stdout] (default task-2)     into
+[0m[0m19:19:30,166 INFO  [stdout] (default task-2)         points
+[0m[0m19:19:30,166 INFO  [stdout] (default task-2)         (created_at, hit, r, temperature, x, y) 
+[0m[0m19:19:30,166 INFO  [stdout] (default task-2)     values
+[0m[0m19:19:30,166 INFO  [stdout] (default task-2)         (?, ?, ?, ?, ?, ?)
+[0m[0m19:20:07,669 INFO  [org.jboss.as.server] (Thread-1) WFLYSRV0272: Suspending server
+[0m[0m19:20:07,675 INFO  [org.jboss.as.ejb3] (Thread-1) WFLYEJB0493: Jakarta Enterprise Beans subsystem suspension complete
+[0m[0m19:20:07,680 INFO  [org.jboss.as.server] (Thread-1) WFLYSRV0220: Server shutdown has been requested via an OS signal
+[0m[0m19:20:07,685 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 93) WFLYUT0022: Unregistered web context: '/opi_lab3' from server 'default-server'
+[0m[31m19:20:07,692 SEVERE [jakarta.faces] (ServerService Thread Pool -- 93) Unable to obtain InjectionProvider from init time FacesContext. Does this container implement the Mojarra Injection SPI?
+[0m[31m19:20:07,692 SEVERE [jakarta.faces] (ServerService Thread Pool -- 93) Unable to call @PreDestroy annotated methods because no InjectionProvider can be found. Does this container implement the Mojarra Injection SPI?
+[0m[0m19:20:07,716 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-4) WFLYJCA0019: Stopped Driver service with driver-name = postgresql-42.7.8.jar
+[0m[0m19:20:07,739 INFO  [org.jboss.as.mail.extension] (MSC service thread 1-3) WFLYMAIL0002: Unbound mail session [java:jboss/mail/Default]
+[0m[0m19:20:07,743 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-3) WFLYUT0019: Host default-host stopping
+[0m[0m19:20:07,751 INFO  [stdout] (MSC service thread 1-2) PointsStatisticsManager: MBean снят с регистрации
+[0m[0m19:20:07,758 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 103) WFLYJPA0011: Stopping Persistence Unit (phase 2 of 2) Service 'opi_lab3.war#Points'
+[0m[0m19:20:07,759 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-5) WFLYSRV0028: Stopped deployment postgresql-42.7.8.jar (runtime-name: postgresql-42.7.8.jar) in 54ms
+[0m[0m19:20:07,760 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 103) WFLYJPA0011: Stopping Persistence Unit (phase 1 of 2) Service 'opi_lab3.war#Points'
+[0m[0m19:20:07,765 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-7) WFLYJCA0010: Unbound data source [java:jboss/datasources/ExampleDS]
+[0m[0m19:20:07,768 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 103) Stopped hibernate cache container
+[0m[0m19:20:07,768 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-5) WFLYJCA0019: Stopped Driver service with driver-name = h2
+[0m[0m19:20:07,769 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-4) WFLYUT0008: Undertow HTTP listener default suspending
+[0m[0m19:20:07,769 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-2) WFLYUT0008: Undertow HTTPS listener https suspending
+[0m[0m19:20:07,770 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-4) WFLYUT0007: Undertow HTTP listener default stopped, was bound to 127.0.0.1:8080
+[0m[0m19:20:07,770 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-2) WFLYUT0007: Undertow HTTPS listener https stopped, was bound to 127.0.0.1:8443
+[0m[0m19:20:07,771 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-2) WFLYUT0004: Undertow 2.3.23.Final stopping
+[0m[0m19:20:07,793 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-4) WFLYSRV0028: Stopped deployment opi_lab3.war (runtime-name: opi_lab3.war) in 95ms
+[0m[0m19:20:07,797 INFO  [org.jboss.as] (MSC service thread 1-8) WFLYSRV0050: WildFly 39.0.1.Final (WildFly Core 31.0.3.Final) stopped in 102ms
 [0m
