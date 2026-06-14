@@ -4,33 +4,30 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.Query;
 import jakarta.transaction.Transactional;
+import org.example.domain.Point;
 import org.example.entity.PointEntity;
-import org.example.utils.exceptions.ValidationError;
-import org.example.utils.jpa.PointsPersistence;
-import org.example.utils.validators.PointValidator;
+import org.example.mapper.PointMapper;
+import org.example.exception.ValidationException;
+import org.example.validator.PointValidator;
 
 import java.util.List;
 
-
-/**
- * Сервис для взаимодействия с БД
- */
 @ApplicationScoped
 public class PointsRepository implements PointsPersistence {
     @Inject
     PointValidator pointValidator;
+    @Inject
+    PointMapper pointMapper;
 
     @PersistenceContext
     private EntityManager em;
 
     @Override
     @Transactional
-    public void save(PointEntity p) throws ValidationError {
-        if (!pointValidator.validate(p)) throw new ValidationError(p);
-        if (p.getId() == null) em.persist(p);
-        else em.merge(p);
+    public void save(Point p) throws ValidationException {
+        if (!pointValidator.validate(p)) throw new ValidationException(p);
+        em.persist(pointMapper.toEntity(p));
     }
 
     @Override
@@ -42,21 +39,19 @@ public class PointsRepository implements PointsPersistence {
 
     @Override
     @Transactional(Transactional.TxType.SUPPORTS)
-    public List<PointEntity> getAllCreatedAtDesc() {
+    public List<Point> getAllCreatedAtDesc() {
         return em.createQuery(
                 "SELECT p from PointEntity p ORDER BY p.createdAt DESC",
                 PointEntity.class
-        ).getResultList();
+        ).getResultStream().map(pointMapper::toDomain).toList();
     }
 
     @Override
     @Transactional(Transactional.TxType.SUPPORTS)
-    public List<PointEntity> getAllFilterByTemperature(Float temperature) {
-        Query q = em.createQuery(
+    public List<Point> getAllFilterByTemperature(Float temperature) {
+        return em.createQuery(
                 "SELECT p from PointEntity p WHERE p.temperature = :temperature ORDER BY p.createdAt DESC",
                 PointEntity.class
-        );
-        q.setParameter("temperature", temperature);
-        return q.getResultList();
+        ).setParameter("temperature", temperature).getResultStream().map(pointMapper::toDomain).toList();
     }
 }

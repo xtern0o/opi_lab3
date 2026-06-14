@@ -1,9 +1,9 @@
-package org.example.services;
+package org.example.service;
 
 import com.google.gson.Gson;
 import jakarta.enterprise.context.ApplicationScoped;
 import lombok.NoArgsConstructor;
-import org.example.utils.exceptions.APIException;
+import org.example.exception.APIException;
 
 import java.io.IOException;
 import java.net.URI;

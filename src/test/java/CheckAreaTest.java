@@ -1,5 +1,5 @@
-import org.example.dto.PointDto;
-import org.example.utils.validators.PointValidator;
+import org.example.domain.Point;
+import org.example.validator.PointValidator;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -24,7 +24,7 @@ public class CheckAreaTest {
     void checkTriangleArea(float x, float y, float r, boolean expected) {
         assertEquals(
                 expected,
-                pointValidator.checkArea(new PointDto(x, y, r, 0F)),
+                pointValidator.checkArea(new Point(x, y, r, 0F, false)),
                 String.format(
                         "(%f, %f) should %s be inside of triangle if r == %f",
                         x, y, (expected ? "" : "not"), r
@@ -41,7 +41,7 @@ public class CheckAreaTest {
     void checkCircleArea(float x, float y, float r, boolean expected) {
         assertEquals(
                 expected,
-                pointValidator.checkArea(new PointDto(x, y, r, 0F)),
+                pointValidator.checkArea(new Point(x, y, r, 0F, false)),
                 String.format(
                         "(%f, %f) should %s be inside of circle if r == %f",
                         x, y, (expected ? "" : "not"), r
@@ -58,7 +58,7 @@ public class CheckAreaTest {
     void checkRectangleArea(float x, float y, float r, boolean expected) {
         assertEquals(
                 expected,
-                pointValidator.checkArea(new PointDto(x, y, r, 0F)),
+                pointValidator.checkArea(new Point(x, y, r, 0F, false)),
                 String.format(
                         "(%f, %f) should %s be inside of rectangle if r == %f",
                         x, y, (expected ? "" : "not"), r
@@ -72,7 +72,7 @@ public class CheckAreaTest {
     })
     void checkEmptyArea(float x, float y, float r) {
         assertFalse(
-                pointValidator.checkArea(new PointDto(x, y, r, 0F)),
+                pointValidator.checkArea(new Point(x, y, r, 0F, false)),
                 String.format(
                         "(%f, %f) should be a miss with any r (especially r == %f)",
                         x, y, r

@@ -1,22 +1,19 @@
-package org.example.managers;
+package org.example.service;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
-import org.example.entity.PointEntity;
+import org.example.domain.Point;
 import org.example.repository.PointsRepository;
-import org.example.utils.exceptions.ValidationError;
+import org.example.exception.ValidationException;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-/**
- * Managed Bean для управления точками
- */
 @ApplicationScoped
-public class PointsBean {
-    private final List<PointEntity> pointsCache = new CopyOnWriteArrayList<>();
+public class PointsService {
+    private final List<Point> pointsCache = new CopyOnWriteArrayList<>();
 
     @Inject
     PointsRepository pointsRepository;
@@ -26,26 +23,22 @@ public class PointsBean {
         refresh();
     }
 
-    public List<PointEntity> getAll() {
+    public List<Point> getAll() {
         return Collections.unmodifiableList(pointsCache);
     }
 
     public synchronized void refresh() {
-        List<PointEntity> fresh = pointsRepository.getAllCreatedAtDesc();
+        List<Point> fresh = pointsRepository.getAllCreatedAtDesc();
         pointsCache.clear();
         pointsCache.addAll(fresh);
     }
 
-    public void add(PointEntity p) throws ValidationError {
+    public void add(Point p) throws ValidationException {
         pointsRepository.save(p);
         pointsCache.add(p);
     }
 
-    public void addAll(List<PointEntity> points) throws ValidationError {
+    public void addAll(List<Point> points) throws ValidationException {
         points.forEach(this::add);
-    }
-
-    public String testString() {
-        return "Hello, pointsBean!";
     }
 }

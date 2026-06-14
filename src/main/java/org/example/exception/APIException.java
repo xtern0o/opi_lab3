@@ -1,4 +1,4 @@
-package org.example.utils.exceptions;
+package org.example.exception;
 
 /**
  * Исключение для обработки некорректного ответа от апи сервера

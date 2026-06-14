@@ -13,13 +13,15 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import org.example.domain.Point;
 import org.example.dto.PointDto;
-import org.example.entity.PointEntity;
-import org.example.managers.PointsBean;
-import org.example.services.WeatherService;
-import org.example.utils.exceptions.APIException;
-import org.example.utils.exceptions.ValidationError;
-import org.example.utils.validators.PointValidator;
+import org.example.management.PointsStats;
+import org.example.service.PointsService;
+import org.example.mapper.PointMapper;
+import org.example.service.WeatherService;
+import org.example.exception.APIException;
+import org.example.exception.ValidationException;
+import org.example.validator.PointValidator;
 import org.primefaces.PrimeFaces;
 
 import java.io.Serializable;
@@ -36,11 +38,15 @@ import java.util.concurrent.CopyOnWriteArrayList;
 @ViewScoped
 public class InputBean implements Serializable {
     @Inject
-    PointsBean pointsBean;
+    PointsService pointsService;
     @Inject
     PointValidator pointValidator;
     @Inject
     WeatherService weatherService;
+    @Inject
+    PointsStats pointsStatistics;
+    @Inject
+    PointMapper pointMapper;
 
     private Float x;
     private Float y;
@@ -90,31 +96,24 @@ public class InputBean implements Serializable {
         refreshTemperature();
         PrimeFaces.current().ajax().addCallbackParam("refreshedTemp", temperature);
 
-        List<PointDto> pointDTOs = new CopyOnWriteArrayList<>();
-        selectedRValues.forEach((r) -> pointDTOs.add(new PointDto(x, y, Float.parseFloat(r), this.temperature)));
-        addPoints(pointDTOs);
+        List<Point> points = new CopyOnWriteArrayList<>();
+        selectedRValues.forEach((r) -> points.add(new Point(x, y, Float.parseFloat(r), this.temperature, false)));
+        addPoints(points);
     }
 
-    /**
-     * Инкапсулированный метод для добавления точек через контроллер
-     * @param pointDTOs массив из дто
-     */
-    private void addPoints(List<PointDto> pointDTOs) {
-        for (int i = 0; i < pointDTOs.size(); i++) {
-            PointDto currentPointDTO = pointDTOs.get(i);
-            currentPointDTO.setHit(pointValidator.checkArea(currentPointDTO));
-            pointDTOs.set(i, currentPointDTO);
+    private void addPoints(List<Point> points) {
+        for (Point point : points) {
+            point.setHit(pointValidator.checkArea(point));
+            pointsStatistics.addPoint(point);
         }
 
-        List<PointEntity> pointEntities = new CopyOnWriteArrayList<>();
-        pointDTOs.forEach(pointDTO -> pointEntities.add(new PointEntity(pointDTO)));
         try {
-            pointsBean.addAll(pointEntities);
-        } catch (ValidationError validationError) {
-            FacesMessage facesMessage = new FacesMessage("Ошибка валидации", validationError.getMessage());
+            pointsService.addAll(points);
+        } catch (ValidationException validationException) {
+            FacesMessage facesMessage = new FacesMessage("Ошибка валидации", validationException.getMessage());
             FacesContext.getCurrentInstance().addMessage(null, facesMessage);
         } finally {
-            String pointsJsonRaw = new Gson().toJson(pointDTOs);
+            String pointsJsonRaw = new Gson().toJson(points.stream().map(pointMapper::toDto).toList());
             PrimeFaces.current().ajax().addCallbackParam("pointsJsonRaw", pointsJsonRaw);
         }
     }
@@ -125,13 +124,13 @@ public class InputBean implements Serializable {
         String y = facesContext.getExternalContext().getRequestParameterMap().get("y");
         List<String> rList = (List<String>) new Gson().fromJson(facesContext.getExternalContext().getRequestParameterMap().get("rList"), List.class);
 
-        List<PointDto> pointDTOs = new CopyOnWriteArrayList<>();
+        List<Point> points = new CopyOnWriteArrayList<>();
         rList.forEach(
-                (r) -> pointDTOs.add(
-                        new PointDto(Float.parseFloat(x), Float.parseFloat(y), Float.parseFloat(r), this.temperature)
+                (r) -> points.add(
+                        new Point(Float.parseFloat(x), Float.parseFloat(y), Float.parseFloat(r), this.temperature, false)
                 )
         );
-        addPoints(pointDTOs);
+        addPoints(points);
     }
 
     /**
@@ -139,8 +138,8 @@ public class InputBean implements Serializable {
      * @return List из DTOшек
      */
     public List<PointDto> getAllPoints() {
-        return pointsBean.getAll().stream()
-                .map(PointDto::new)
+        return pointsService.getAll().stream()
+                .map(pointMapper::toDto)
                 .toList();
     }
 

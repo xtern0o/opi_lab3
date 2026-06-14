@@ -2,7 +2,6 @@ package org.example.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.example.dto.PointDto;
 
 import java.time.Instant;
 
@@ -13,14 +12,6 @@ import java.time.Instant;
 @ToString
 @Table(name="points")
 public class PointEntity {
-
-    public PointEntity(PointDto pointDTO) {
-        this.x = pointDTO.getX();
-        this.y = pointDTO.getY();
-        this.r = pointDTO.getR();
-        this.hit = pointDTO.isHit();
-        this.temperature = pointDTO.getTemperature();
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

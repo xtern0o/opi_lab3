@@ -1,4 +1,4 @@
-package org.example.utils.validators;
+package org.example.validator;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,4 +1,4 @@
-package org.example.utils.validators;
+package org.example.controller;
 
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.component.UIComponent;
