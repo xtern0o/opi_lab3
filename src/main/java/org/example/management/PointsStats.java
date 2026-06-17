@@ -6,20 +6,24 @@ import org.example.domain.Point;
 
 import javax.management.Notification;
 import javax.management.NotificationBroadcasterSupport;
+import javax.management.ObjectName;
 import java.util.concurrent.atomic.AtomicLong;
 
 @ApplicationScoped
 @Named("pointsStats")
 public class PointsStats extends NotificationBroadcasterSupport implements PointsStatsMBean {
-    /**
-     * Границы координатной плоскости [-5; 5]
-     */
-    private static final float DISPLAY_LIMIT = 5f;
+    private static final float Y_NOTIFY_THRESHOLD = -4.5f;
 
     private final AtomicLong totalPoints = new AtomicLong();
     private final AtomicLong missedPoints = new AtomicLong();
     private final AtomicLong notificationSequence = new AtomicLong();
     private final AtomicLong totalClicks = new AtomicLong();
+
+    private volatile ObjectName objectName;
+
+    public void setObjectName(ObjectName objectName) {
+        this.objectName = objectName;
+    }
 
     @Override
     public long getTotalPoints() {
@@ -50,14 +54,14 @@ public class PointsStats extends NotificationBroadcasterSupport implements Point
             missedPoints.incrementAndGet();
         }
 
-        if (isOutOfDisplayArea(point)) {
+        if (isBelowYThreshold(point)) {
             sendNotification(new Notification(
                     getClass().getName(),
-                    this,
+                    objectName,
                     notificationSequence.incrementAndGet(),
                     System.currentTimeMillis(),
-                    String.format("(x=%s, y=%s) out of observable bounds [-5; 5]",
-                            point.getX(), point.getY())));
+                    String.format("(x=%s, y=%s) y below threshold %s",
+                            point.getX(), point.getY(), Y_NOTIFY_THRESHOLD)));
         }
     }
 
@@ -65,12 +69,11 @@ public class PointsStats extends NotificationBroadcasterSupport implements Point
         totalClicks.incrementAndGet();
     }
 
-    private boolean isOutOfDisplayArea(Point point) {
-        Float x = point.getX();
+    private boolean isBelowYThreshold(Point point) {
         Float y = point.getY();
-        if (x == null || y == null) {
+        if (y == null) {
             return false;
         }
-        return Math.abs(x) > DISPLAY_LIMIT || Math.abs(y) > DISPLAY_LIMIT;
+        return y < Y_NOTIFY_THRESHOLD;
     }
 }

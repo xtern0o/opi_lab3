@@ -31,6 +31,9 @@ public class MBeanRegister {
             ObjectName statsName = new ObjectName(STATS_NAME);
             ObjectName ratioName = new ObjectName(RATIO_NAME);
             if (!server.isRegistered(statsName)) {
+                // source нотификаций должен быть ObjectName (сериализуем),
+                // иначе RMI-коннектор не сможет доставить событие в JConsole
+                pointsStats.setObjectName(statsName);
                 // для исправления бага прокси
                 server.registerMBean(new StandardEmitterMBean(pointsStats, PointsStatsMBean.class, pointsStats), statsName);
             }
